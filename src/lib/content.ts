@@ -1,0 +1,287 @@
+/**
+ * Central content source for the PureHabitat partner site.
+ *
+ * All product claims are taken verbatim (or lightly condensed) from the
+ * official YOGa Clean Air brochure and the "Y-CAB vs ERV" comparison
+ * document. No claims are invented here — keep it that way.
+ */
+
+export const site = {
+  name: "PureHabitat",
+  tagline: "Purity for the places that matter most.",
+  partnerOf: "YOGa Clean Air",
+  description:
+    "PureHabitat is an authorized channel partner for YOGa Clean Air. We help architects, interior designers, luxury builders, HVAC consultants and real estate professionals bring hospital-grade clean air to the homes they create.",
+  url: "https://purehabitat.in",
+  email: "partners@purehabitat.in",
+  contacts: [
+    { name: "Miren", phone: "+91 98798 69406", tel: "+919879869406" },
+    { name: "Karan", phone: "+91 96574 41692", tel: "+919657441692" },
+  ],
+} as const;
+
+export const nav = [
+  { label: "Why Partner", href: "#why-partner" },
+  { label: "Why YOGa", href: "#why-yoga" },
+  { label: "How It Works", href: "#how-it-works" },
+  { label: "Benefits", href: "#benefits" },
+  { label: "Resources", href: "#resources" },
+  { label: "FAQ", href: "#faq" },
+] as const;
+
+/** Headline stats — all verified in the brochure. */
+export const heroStats = [
+  { value: "< 5 µg/m³", label: "Indoor PM2.5", sub: "Single-digit guaranteed" },
+  { value: "1,500 sq.ft", label: "Coverage per unit", sub: "Whole-space clean air" },
+  { value: "500 CFM", label: "Fresh airflow", sub: "Filtered outdoor air" },
+  { value: "99.99%", label: "Uptime", sub: "24/7 service SLA" },
+] as const;
+
+export const whyPartner = {
+  eyebrow: "Why partner with PureHabitat",
+  title: "Add a wellness layer your clients can feel — and thank you for.",
+  lead: "Luxury clients already invest in organic food and filtered water. Clean air is the most impactful, most overlooked upgrade — and it becomes part of your signature.",
+  points: [
+    {
+      title: "Deliver genuinely healthier homes",
+      body: "YOGa keeps indoor PM2.5 in the single digits and continuously flushes CO₂ — an outcome your clients notice in their sleep, energy and everyday comfort.",
+    },
+    {
+      title: "Elevate premium projects",
+      body: "A ductless or minimal-duct system that preserves ceiling heights and open-air aesthetics — clean air that integrates into the design instead of fighting it.",
+    },
+    {
+      title: "Deepen client trust",
+      body: "IIT Delhi–validated performance and a 365-day clean-air guarantee mean you recommend with evidence, not marketing claims.",
+    },
+    {
+      title: "Zero operational burden",
+      body: "You refer; PureHabitat handles the IAQ consultation, installation and lifetime white-glove service. Your relationship stays about design.",
+    },
+  ],
+} as const;
+
+/** Core YOGa advantages — from the brochure "ADVANTAGE" section. */
+export const yogaBenefits = [
+  {
+    title: "Fresh outdoor air, not recycled stale air",
+    body: "Room purifiers endlessly recirculate the same stale indoor air. YOGa continuously brings in fresh filtered outdoor air — solving both PM2.5 and CO₂ buildup simultaneously.",
+  },
+  {
+    title: "Whole space — not just one room",
+    body: "A single Y-CAB covers 1,500 sq.ft — an entire home, school floor or clinic. Every room breathes clean, not just the one with a purifier in the corner.",
+  },
+  {
+    title: "IIT Delhi validated — real Indian data",
+    body: "Independent IIT Delhi studies confirmed results in real Indian spaces. Golf Links: 2.82 µg/m³ indoor vs 561 outside — a verified 99.5% reduction, not a lab claim.",
+  },
+  {
+    title: "Filters available for 20+ years",
+    body: "YOGa guarantees parts and filters for 20+ years. Most consumer purifiers are obsolete in 2 years when filters go out of production.",
+  },
+] as const;
+
+/** Verified installations — IIT Delhi study, from the brochure. */
+export const verifiedResults = [
+  { indoor: "2.82 µg/m³", reduction: "99.5%", place: "Golf Links Residence", outside: "561 µg/m³ outside" },
+  { indoor: "4.53 µg/m³", reduction: "96%", place: "Vasant Vihar Home", outside: "118 µg/m³ outside" },
+  { indoor: "1.63 µg/m³", reduction: "99%", place: "GD Goenka School", outside: "170 µg/m³ outside" },
+] as const;
+
+/** Three-way comparison: Room Purifier vs Standard ERV vs Y-CAB. */
+export const comparison = {
+  columns: ["Room Purifier", "Standard ERV", "Y-CAB System"] as const,
+  rows: [
+    {
+      feature: "Air source",
+      purifier: "Recirculates the same stale indoor air",
+      erv: "Balanced exchange of indoor and outdoor air",
+      ycab: "Continuously supplies fresh, filtered outdoor air",
+    },
+    {
+      feature: "Pressure principle",
+      purifier: "None — passive recirculation",
+      erv: "Neutral / balanced pressure",
+      ycab: "Positive pressure — forms a protective clean-air bubble",
+    },
+    {
+      feature: "Pollution ingress (India)",
+      purifier: "Untreated air keeps seeping through gaps",
+      erv: "Fails — unfiltered air seeps through window & door gaps",
+      ycab: "Blocked — indoor air pushes outward through any gap",
+    },
+    {
+      feature: "CO₂ control",
+      purifier: "None — CO₂ keeps building up",
+      erv: "Partial via air exchange",
+      ycab: "Continuously flushed with oxygenated fresh air",
+    },
+    {
+      feature: "Coverage",
+      purifier: "A single room",
+      erv: "Whole home via extensive ductwork",
+      ycab: "1,500 sq.ft whole-space per unit",
+    },
+    {
+      feature: "Filtration",
+      purifier: "Consumer-grade, obsolete in ~2 years",
+      erv: "Thin filters that clog within weeks at Indian AQI",
+      ycab: "Medical-grade H14 HEPA + deep-bed activated carbon",
+    },
+    {
+      feature: "Architectural footprint",
+      purifier: "Freestanding appliance in the room",
+      erv: "Invasive dual ducts that lower ceiling heights",
+      ycab: "Ductless / minimal-duct — preserves ceilings & aesthetics",
+    },
+    {
+      feature: "Service model",
+      purifier: "Replace the whole unit when filters end",
+      erv: "Third-party trader, no long-term accountability",
+      ycab: "White-glove managed service, 20+ year parts guarantee",
+    },
+  ],
+} as const;
+
+/** Technical specifications — from the brochure "TECHNICAL" section. */
+export const techSpecs = [
+  { label: "Airflow", value: "500 CFM max" },
+  { label: "Coverage", value: "1,500 sq.ft per unit" },
+  { label: "Power", value: "30–170 Watts" },
+  { label: "Fan type", value: "EC fan — 10 speed levels" },
+  { label: "Efficiency", value: "99.5% down to 0.3 µm" },
+  { label: "Filter media", value: "Synthetic micropore + H14 HEPA" },
+  { label: "Mounting", value: "Wall / floor / ceiling" },
+  { label: "Dimensions", value: "580 × 350 × 380 mm" },
+  { label: "Weight", value: "22 kg" },
+  { label: "Ozone / ionization", value: "None — pure passive filtration" },
+  { label: "Running cost", value: "≈ ₹400–500 / month, 24/7" },
+  { label: "Best for", value: "Premium homes, schools, offices, clinics" },
+] as const;
+
+export const howItWorks = [
+  {
+    step: "01",
+    title: "Become a partner",
+    body: "Register in minutes. We onboard you, share the toolkit and brief you on the product so you can recommend with confidence.",
+  },
+  {
+    step: "02",
+    title: "Refer a client",
+    body: "Introduce a client or project. Send us the space details and we take it from there — your name stays on the relationship.",
+  },
+  {
+    step: "03",
+    title: "We handle consultation",
+    body: "Our team runs a free on-site Indoor Air Quality (IAQ) assessment and recommends the right YOGa solution for the space.",
+  },
+  {
+    step: "04",
+    title: "Installation",
+    body: "A ductless or minimal-duct Y-CAB is installed cleanly, preserving the architecture and finishes of the project.",
+  },
+  {
+    step: "05",
+    title: "Ongoing support",
+    body: "White-glove cyclic maintenance and a 24/7 service SLA keep the system — and your client relationship — running for years.",
+  },
+] as const;
+
+export const partnerBenefits = [
+  {
+    title: "Dedicated partner support",
+    body: "A single point of contact for every referral, quote and installation — no chasing distributors.",
+  },
+  {
+    title: "Technical guidance",
+    body: "Load calculations, placement and specification support for your drawings and BOQs.",
+  },
+  {
+    title: "Marketing resources",
+    body: "Co-branded brochures, renders, comparison sheets and social assets ready to share with clients.",
+  },
+  {
+    title: "Training & enablement",
+    body: "Product and IAQ training so your team can speak to clean air with authority.",
+  },
+  {
+    title: "Referral rewards",
+    body: "A structured referral program that recognizes and rewards every successful installation.",
+  },
+  {
+    title: "White-glove fulfilment",
+    body: "PureHabitat owns consultation, install and lifetime service — you stay focused on design.",
+  },
+] as const;
+
+export const resources = [
+  {
+    title: "YOGa Clean Air brochure",
+    description: "The complete product overview — concept, health impact, verified results and specifications.",
+    cta: "Download PDF",
+    kind: "Brochure",
+    href: "/downloads/yoga-clean-air-brochure.pdf",
+    download: true,
+  },
+  {
+    title: "Y-CAB vs ERV technical guide",
+    description: "Why standard ERV systems fall short in Indian conditions and how the Y-CAB system is engineered differently.",
+    cta: "Read the guide",
+    kind: "Technical",
+    href: "#why-yoga",
+    download: false,
+  },
+  {
+    title: "Partner FAQ",
+    description: "Everything architects, designers and consultants ask before recommending YOGa to clients.",
+    cta: "Browse FAQ",
+    kind: "FAQ",
+    href: "#faq",
+    download: false,
+  },
+] as const;
+
+export const faqs = [
+  {
+    q: "What exactly is the Clean Air Bubble?",
+    a: "Think of it as a 'fresh air window'. The Y-CAB unit draws outdoor air through a duct in the wall, filters it through hospital-grade media, then pumps clean air in at slight positive pressure. This bubble pushes polluted air out — so pollution cannot enter.",
+  },
+  {
+    q: "How is this different from a room air purifier?",
+    a: "Room purifiers recirculate the same stale indoor air, cover a single room and do nothing for CO₂. YOGa continuously brings in fresh filtered outdoor air across 1,500 sq.ft and solves PM2.5 and CO₂ buildup simultaneously.",
+  },
+  {
+    q: "Why not just use a standard ERV?",
+    a: "Standard ERVs are engineered for sealed Western homes and run at neutral pressure, so polluted outdoor air seeps in through gaps in Indian construction. Their thin filters also clog within weeks at Indian AQI levels. Y-CAB uses positive pressure and medical-grade H14 HEPA + deep-bed carbon.",
+  },
+  {
+    q: "Is the performance actually proven?",
+    a: "Yes. Independent IIT Delhi studies verified results in real Indian spaces — for example the Golf Links residence measured 2.82 µg/m³ indoors versus 561 µg/m³ outside, a 99.5% reduction.",
+  },
+  {
+    q: "Will it disrupt the architecture or ceiling heights?",
+    a: "No. Y-CAB is a ductless or minimal-duct system with a compact footprint, unlike ERVs that require extensive dual ductwork and lower false ceilings.",
+  },
+  {
+    q: "What does it cost to run?",
+    a: "Approximately ₹400–500 per month running 24/7 — less than the cost of one coffee a day for hospital-grade clean air in every room.",
+  },
+  {
+    q: "What support do partners get after referring a client?",
+    a: "PureHabitat handles the free IAQ consultation, installation and lifetime white-glove maintenance with a 24/7 service SLA and 20+ year parts guarantee. You stay focused on your client relationship.",
+  },
+  {
+    q: "Who is the ideal client for YOGa?",
+    a: "Premium homes, schools, corporate offices, clinics, hospitals and gyms — and anyone with asthma, allergies, respiratory conditions or a focus on longevity and wellness.",
+  },
+] as const;
+
+export const businessTypes = [
+  "Architect",
+  "Interior Designer",
+  "Luxury Builder / Developer",
+  "HVAC Consultant",
+  "Smart Home Integrator",
+  "Luxury Real Estate Consultant",
+  "Other",
+] as const;

@@ -1,0 +1,256 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ------------------------------------------------------------------ */
+/*  PureHabitat design tokens                                          */
+/*  Luxury / minimal — inspired by Apple, Linear, Notion, Tesla        */
+/* ------------------------------------------------------------------ */
+
+:root {
+  --radius: 0.85rem;
+
+  --background: #ffffff;
+  --foreground: #0a1a2f;
+
+  --card: #ffffff;
+  --card-foreground: #0a1a2f;
+
+  --popover: #ffffff;
+  --popover-foreground: #0a1a2f;
+
+  --primary: #0e5fef;
+  --primary-foreground: #ffffff;
+
+  --secondary: #f2f6fa;
+  --secondary-foreground: #0a1a2f;
+
+  --muted: #f2f6fa;
+  --muted-foreground: #57687d;
+
+  --accent: #e9fbf3;
+  --accent-foreground: #063d2c;
+
+  --destructive: #e11d48;
+  --destructive-foreground: #ffffff;
+
+  --border: #e4eaf1;
+  --input: #e4eaf1;
+  --ring: #0e5fef;
+
+  /* Brand constants (stable across themes) */
+  --brand-blue: #1b5bff;
+  --brand-blue-soft: #4f86ff;
+  --brand-teal: #14c08a;
+  --brand-mint: #4fe3ad;
+  --brand-navy: #08152b;
+  --brand-sky: #7fb3ff;
+}
+
+.dark {
+  --background: #060d1a;
+  --foreground: #eaf1f8;
+
+  --card: #0b1524;
+  --card-foreground: #eaf1f8;
+
+  --popover: #0b1524;
+  --popover-foreground: #eaf1f8;
+
+  --primary: #3b82f6;
+  --primary-foreground: #04101f;
+
+  --secondary: #111c2e;
+  --secondary-foreground: #eaf1f8;
+
+  --muted: #111c2e;
+  --muted-foreground: #93a4b8;
+
+  --accent: #0f2a24;
+  --accent-foreground: #7ff0c6;
+
+  --destructive: #fb7185;
+  --destructive-foreground: #1a0308;
+
+  --border: #1c2b40;
+  --input: #1c2b40;
+  --ring: #3b82f6;
+
+  --brand-blue: #3b82f6;
+  --brand-blue-soft: #6ea1ff;
+  --brand-teal: #24d59b;
+  --brand-mint: #63f0bd;
+  --brand-navy: #04101f;
+  --brand-sky: #9cc4ff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-blue-soft: var(--brand-blue-soft);
+  --color-brand-teal: var(--brand-teal);
+  --color-brand-mint: var(--brand-mint);
+  --color-brand-navy: var(--brand-navy);
+  --color-brand-sky: var(--brand-sky);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-sora), var(--font-inter), ui-sans-serif, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 14px);
+
+  --animate-accordion-down: accordion-down 0.3s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-marquee: marquee 32s linear infinite;
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--brand-blue) 25%, transparent);
+  }
+
+  /* Respect reduced-motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .text-gradient {
+    background-image: linear-gradient(
+      100deg,
+      var(--brand-blue) 0%,
+      var(--brand-teal) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .bg-brand-gradient {
+    background-image: linear-gradient(
+      120deg,
+      var(--brand-blue) 0%,
+      var(--brand-teal) 100%
+    );
+  }
+
+  /* Subtle glass surface */
+  .glass {
+    background-color: color-mix(in srgb, var(--card) 72%, transparent);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+  }
+
+  /* Fine hairline top border used on premium cards */
+  .ring-hairline {
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--foreground) 8%, transparent);
+  }
+
+  .container-px {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-px {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+}
+
+/* Aurora / mesh background used behind the hero */
+.aurora {
+  background:
+    radial-gradient(40% 55% at 15% 20%, color-mix(in srgb, var(--brand-blue) 40%, transparent) 0%, transparent 70%),
+    radial-gradient(45% 55% at 85% 15%, color-mix(in srgb, var(--brand-teal) 34%, transparent) 0%, transparent 70%),
+    radial-gradient(50% 60% at 60% 90%, color-mix(in srgb, var(--brand-sky) 30%, transparent) 0%, transparent 70%);
+  filter: blur(30px);
+}
+
+.grid-fade {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--foreground) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--foreground) 6%, transparent) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+}
