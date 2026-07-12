@@ -30,26 +30,22 @@ export function LogoMark({ gradient = false, className, ...props }: LogoMarkProp
           </linearGradient>
         </defs>
       )}
-      <circle cx="24" cy="24" r="21" stroke={stroke} strokeWidth="1.75" />
-      <path
-        d="M24 4C36 13 36 35 24 44"
+      <g
         stroke={stroke}
-        strokeWidth="1.75"
+        strokeWidth="1.7"
         strokeLinecap="round"
-      />
-      <path
-        d="M24 4C12 13 12 35 24 44"
-        stroke={stroke}
-        strokeWidth="1.75"
-        strokeLinecap="round"
-      />
-      <path d="M24 4V44" stroke={stroke} strokeWidth="1.75" strokeLinecap="round" />
-      <path
-        d="M15 24C18.5 21 29.5 21 33 24"
-        stroke={stroke}
-        strokeWidth="1.75"
-        strokeLinecap="round"
-      />
+        strokeLinejoin="round"
+      >
+        <circle cx="24" cy="24" r="20.5" />
+        {/* Upper leaf (fresh air) */}
+        <path d="M24 5C31.5 11.5 31.5 19 24 23.7C16.5 19 16.5 11.5 24 5Z" />
+        {/* Lower loop (constant purification) */}
+        <path d="M24 24.3C32.5 28.5 32.5 39 24 43C15.5 39 15.5 28.5 24 24.3Z" />
+        {/* Center vein */}
+        <path d="M24 5V43" />
+        {/* Leaf tip detail */}
+        <path d="M19.6 15L24 10.2L28.4 15" />
+      </g>
     </svg>
   );
 }

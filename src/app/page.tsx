@@ -1,6 +1,8 @@
 import { Hero } from "@/components/sections/hero";
+import { Concept } from "@/components/sections/concept";
 import { WhyPartner } from "@/components/sections/why-partner";
 import { WhoWePartner } from "@/components/sections/who-we-partner";
+import { Spaces } from "@/components/sections/spaces";
 import { WhyYoga } from "@/components/sections/why-yoga";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { PartnerBenefits } from "@/components/sections/partner-benefits";
@@ -15,8 +17,10 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <Concept />
       <WhyPartner />
       <WhoWePartner />
+      <Spaces />
       <WhyYoga />
       <HowItWorks />
       <PartnerBenefits />

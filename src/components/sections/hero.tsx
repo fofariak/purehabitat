@@ -1,9 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, CalendarClock, ShieldCheck } from "lucide-react";
+import { ArrowRight, CalendarClock, Filter, ShieldCheck, Wind } from "lucide-react";
 
 import { heroStats, site } from "@/lib/content";
 import { Button } from "@/components/ui/button";
@@ -112,60 +111,74 @@ function HeroVisual() {
       transition={{ duration: 0.9, delay: 0.2, ease: [0.21, 0.47, 0.32, 0.98] }}
       className="relative mx-auto w-full max-w-md"
     >
-      {/* Gradient halo behind the frame */}
-      <div
-        aria-hidden
-        className="absolute -inset-6 rounded-[2.5rem] bg-brand-gradient opacity-20 blur-2xl"
-      />
+      {/* Branded "clean air bubble" panel */}
+      <div className="relative aspect-square overflow-hidden rounded-[2rem] border border-brand-navy/20 bg-brand-navy shadow-xl">
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(50% 60% at 25% 20%, color-mix(in srgb, var(--brand-blue) 55%, transparent), transparent 70%), radial-gradient(55% 60% at 80% 85%, color-mix(in srgb, var(--brand-teal) 45%, transparent), transparent 70%)",
+          }}
+        />
 
-      <div className="relative overflow-hidden rounded-[2rem] border border-border bg-card shadow-xl ring-hairline">
-        <div className="relative aspect-[4/5]">
-          <Image
-            src="/img/breathe.jpg"
-            alt="A person breathing clean, filtered air"
-            fill
-            priority
-            sizes="(max-width: 1024px) 90vw, 440px"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-brand-navy/5 to-transparent" />
+        {/* Concentric bubble rings */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          {[0, 1, 2, 3].map((i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full border border-white/15"
+              style={{ inset: `${8 + i * 11}%` }}
+              animate={{ scale: [1, 1.03, 1], opacity: [0.4, 0.8, 0.4] }}
+              transition={{
+                duration: 5 + i,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 0.35,
+              }}
+            />
+          ))}
+        </div>
 
-          {/* Brand badge */}
-          <div className="absolute left-4 top-4">
-            <div className="glass flex items-center gap-2 rounded-full px-3 py-1.5 shadow-lg">
-              <LogoMark gradient className="size-5" />
-              <span className="font-display text-xs font-semibold text-white">
-                Clean Air Bubble
-              </span>
-            </div>
-          </div>
+        {/* Logo mark */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <motion.div
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className="flex size-32 items-center justify-center rounded-[1.75rem] border border-white/15 bg-white/5 backdrop-blur-sm"
+          >
+            <LogoMark className="size-20 text-white" />
+          </motion.div>
+        </div>
 
-          {/* Bottom caption */}
-          <div className="absolute inset-x-4 bottom-4">
-            <div className="glass rounded-2xl px-4 py-3 shadow-lg">
-              <p className="text-xs text-white/80">Guaranteed indoor PM2.5</p>
-              <p className="font-display text-xl font-semibold text-white">
-                {"< 5 µg/m³"}{" "}
-                <span className="text-sm font-normal text-brand-mint">
-                  · 99.5% verified
-                </span>
-              </p>
-            </div>
-          </div>
+        {/* Caption */}
+        <div className="absolute inset-x-5 bottom-5 text-center">
+          <p className="font-display text-sm font-semibold text-white">
+            The Clean Air Bubble
+          </p>
+          <p className="text-xs text-white/60">Fresh air in · pollution out</p>
         </div>
       </div>
 
-      {/* Floating stat chip */}
+      {/* Floating pills — ventilation + purification */}
       <motion.div
-        className="absolute -right-3 top-1/3 hidden sm:block"
+        className="absolute -left-3 top-10 hidden sm:block"
         animate={{ y: [0, -8, 0] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
       >
-        <div className="glass ring-hairline rounded-2xl px-3.5 py-2.5 shadow-lg">
-          <p className="text-[11px] uppercase tracking-wide text-muted-foreground">
-            Coverage
-          </p>
-          <p className="font-display text-sm font-semibold">1,500 sq.ft</p>
+        <div className="glass ring-hairline flex items-center gap-2 rounded-full px-3.5 py-2 shadow-lg">
+          <Wind className="size-4 text-brand-blue" />
+          <span className="text-sm font-medium">Ventilation</span>
+        </div>
+      </motion.div>
+      <motion.div
+        className="absolute -right-3 bottom-16 hidden sm:block"
+        animate={{ y: [0, -8, 0] }}
+        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+      >
+        <div className="glass ring-hairline flex items-center gap-2 rounded-full px-3.5 py-2 shadow-lg">
+          <Filter className="size-4 text-brand-teal" />
+          <span className="text-sm font-medium">Purification</span>
         </div>
       </motion.div>
     </motion.div>

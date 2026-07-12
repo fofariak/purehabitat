@@ -2,12 +2,13 @@
 
 import * as React from "react";
 import Script from "next/script";
-import { CalendarClock, Mail, Phone, Video } from "lucide-react";
+import { CalendarClock, Mail, Video } from "lucide-react";
 
-import { site } from "@/lib/content";
+import { site, whatsappLink } from "@/lib/content";
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
 import { Button } from "@/components/ui/button";
+import { WhatsAppIcon } from "@/components/whatsapp-button";
 
 const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL;
 
@@ -60,30 +61,28 @@ function BookingFallback() {
           Let&apos;s find a time that works.
         </h3>
         <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
-          Pick a slot that suits you and we&apos;ll walk you through the product,
-          the partner program and answer any technical questions. Prefer to talk
-          now? Reach us directly below.
+          We&apos;ll walk you through the product, the partner program and answer
+          any technical questions — for you or a specific client project. The
+          fastest way to reach us is WhatsApp.
         </p>
 
-        <div className="mt-6 space-y-3">
-          {site.contacts.map((c) => (
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+          <Button asChild size="lg" className="bg-[#25D366] text-white hover:bg-[#25D366]/90">
             <a
-              key={c.tel}
-              href={`tel:${c.tel}`}
-              className="flex items-center gap-3 rounded-xl border border-border bg-background/50 px-4 py-3 text-sm transition-colors hover:bg-secondary"
+              href={whatsappLink(site.contacts[0].whatsapp)}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <Phone className="size-4 text-brand-teal" />
-              <span className="font-medium">{c.name}</span>
-              <span className="text-muted-foreground">{c.phone}</span>
+              <WhatsAppIcon className="size-5" />
+              Chat on WhatsApp
             </a>
-          ))}
-          <a
-            href={`mailto:${site.email}?subject=Book a PureHabitat demo`}
-            className="flex items-center gap-3 rounded-xl border border-border bg-background/50 px-4 py-3 text-sm transition-colors hover:bg-secondary"
-          >
-            <Mail className="size-4 text-brand-teal" />
-            <span className="text-muted-foreground">{site.email}</span>
-          </a>
+          </Button>
+          <Button asChild variant="outline" size="lg">
+            <a href={`mailto:${site.email}?subject=Book a PureHabitat demo`}>
+              <Mail className="size-4" />
+              Email us
+            </a>
+          </Button>
         </div>
       </div>
 
@@ -93,11 +92,15 @@ function BookingFallback() {
           Instant scheduling
         </h4>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          Live scheduling opens here once connected. In the meantime, request a
-          slot in one tap and we&apos;ll confirm by email.
+          Live scheduling opens here once connected. In the meantime, message us
+          on WhatsApp and we&apos;ll confirm a slot right away.
         </p>
         <Button asChild variant="brand" size="lg" className="mt-6">
-          <a href={`mailto:${site.email}?subject=Request a PureHabitat demo`}>
+          <a
+            href={whatsappLink(site.contacts[0].whatsapp, "Hi PureHabitat, I'd like to book a demo of YOGa Clean Air.")}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <CalendarClock className="size-4" />
             Request a demo slot
           </a>

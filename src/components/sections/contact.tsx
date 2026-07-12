@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { ArrowRight, Mail, Phone } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 
-import { site } from "@/lib/content";
+import { site, whatsappLink } from "@/lib/content";
 import { Reveal } from "@/components/reveal";
 import { Button } from "@/components/ui/button";
 import { LogoMark } from "@/components/logo";
+import { WhatsAppIcon } from "@/components/whatsapp-button";
 
 export function Contact() {
   return (
@@ -38,30 +39,39 @@ export function Contact() {
                       <ArrowRight className="size-4" />
                     </Link>
                   </Button>
-                  <Button asChild variant="outline" size="lg">
-                    <Link href="#book-demo">Book a demo</Link>
+                  <Button asChild size="lg" className="bg-[#25D366] text-white hover:bg-[#25D366]/90">
+                    <a
+                      href={whatsappLink(site.contacts[0].whatsapp)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <WhatsAppIcon className="size-5" />
+                      Chat on WhatsApp
+                    </a>
                   </Button>
                 </div>
               </div>
 
-              <div className="space-y-3 rounded-2xl border border-border bg-background/50 p-6">
+              <div className="space-y-2 rounded-2xl border border-border bg-background/50 p-6">
                 <p className="text-sm font-medium text-muted-foreground">
-                  Talk to our team
+                  Talk to our team on WhatsApp
                 </p>
                 {site.contacts.map((c) => (
                   <a
                     key={c.tel}
-                    href={`tel:${c.tel}`}
-                    className="flex items-center gap-3 rounded-xl px-2 py-2 text-sm transition-colors hover:bg-secondary"
+                    href={whatsappLink(c.whatsapp)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 rounded-xl px-2 py-2.5 text-sm transition-colors hover:bg-secondary"
                   >
-                    <Phone className="size-4 text-brand-teal" />
+                    <WhatsAppIcon className="size-4 text-[#25D366]" />
                     <span className="font-medium">{c.name}</span>
                     <span className="text-muted-foreground">{c.phone}</span>
                   </a>
                 ))}
                 <a
                   href={`mailto:${site.email}`}
-                  className="flex items-center gap-3 rounded-xl px-2 py-2 text-sm transition-colors hover:bg-secondary"
+                  className="flex items-center gap-3 rounded-xl px-2 py-2.5 text-sm transition-colors hover:bg-secondary"
                 >
                   <Mail className="size-4 text-brand-teal" />
                   <span className="text-muted-foreground">{site.email}</span>

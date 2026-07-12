@@ -23,13 +23,16 @@ professional introduction can become many buyers over time.
 ## Landing page sections
 
 1. Hero — "Help your clients build healthier luxury homes."
-2. Why partner with PureHabitat
-3. Who it's for (interior designers, architects, luxury builders, home-automation companies)
-4. Why YOGa Clean Air (benefits, IIT-Delhi verified results, Room Purifier vs ERV vs Y-CAB comparison, tech specs)
-5. How it works (5-step referral flow)
-6. Partner benefits
-7. Resources (brochure download, technical guide, FAQ)
-8. Become a partner form (stored in Supabase)
+2. The system — what it is: ventilation + purification (Clean Air Bubble)
+3. Why partner with PureHabitat
+4. Who it's for (interior designers, architects, luxury builders, home-automation companies)
+5. Spaces — homes, schools, offices, clinics, gyms, hospitality
+6. Why YOGa Clean Air (benefits, IIT-Delhi verified results, Room Purifier vs ERV vs Y-CAB comparison, tech specs)
+7. How it works (5-step referral flow)
+8. Partner benefits
+9. Resources (brochure download, technical guide, FAQ)
+10. Become a partner form (stored in Supabase)
+11. Book a demo + WhatsApp, FAQ, contact (WhatsApp click-to-chat throughout)
 8. Book a demo (Calendly or contact fallback)
 9. FAQ
 10. Contact

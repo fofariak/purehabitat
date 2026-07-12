@@ -15,18 +15,84 @@ export const site = {
   url: "https://mypurehabitat.com",
   email: "partners@mypurehabitat.com",
   contacts: [
-    { name: "Miren", phone: "+91 98798 69406", tel: "+919879869406" },
-    { name: "Karan", phone: "+91 96574 41692", tel: "+919657441692" },
+    { name: "Miren", phone: "+91 98798 69406", tel: "+919879869406", whatsapp: "919879869406" },
+    { name: "Karan", phone: "+91 96574 41692", tel: "+919657441692", whatsapp: "919657441692" },
+  ],
+  whatsappMessage:
+    "Hi PureHabitat, I'd like to learn more about YOGa Clean Air for my space / clients.",
+} as const;
+
+/** Pre-filled WhatsApp click-to-chat link for a raw number. */
+export function whatsappLink(number: string, message: string = site.whatsappMessage) {
+  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+}
+
+export const nav = [
+  { label: "The System", href: "#concept" },
+  { label: "Who It's For", href: "#who" },
+  { label: "Spaces", href: "#spaces" },
+  { label: "Why YOGa", href: "#why-yoga" },
+  { label: "How It Works", href: "#how-it-works" },
+  { label: "FAQ", href: "#faq" },
+] as const;
+
+/**
+ * What the product actually is — ventilation + purification, in plain terms.
+ * Sourced from the brochure concept + comparison document.
+ */
+export const concept = {
+  eyebrow: "The system",
+  title: "Fresh air in, pollution out — ventilation and purification in one.",
+  lead: "Think of the Y-CAB as a 'fresh air window'. It draws outdoor air through a duct in the wall, filters it through hospital-grade media, then pumps clean air in at slight positive pressure — creating a bubble that pushes polluted air out so it can't get back in.",
+  pillars: [
+    {
+      title: "Fresh air",
+      caption: "Ventilation",
+      body: "Continuously brings in filtered outdoor air and flushes CO₂ — unlike purifiers that just recycle the same stale air.",
+    },
+    {
+      title: "Constant purification",
+      caption: "Filtration",
+      body: "Medical-grade H14 HEPA + deep-bed activated carbon strip out PM2.5, VOCs, bacteria and viruses, 24/7.",
+    },
+    {
+      title: "Your space",
+      caption: "Positive pressure",
+      body: "A slight positive pressure forms a protective clean-air bubble across the whole space — pollution simply cannot seep in.",
+    },
+  ],
+  dual: [
+    {
+      kind: "Ventilation",
+      title: "Ventilation — fresh air, in",
+      points: [
+        "Draws in fresh outdoor air at up to 500 CFM",
+        "Positive pressure blocks polluted air from seeping through gaps",
+        "Continuously flushes CO₂ for better sleep and focus",
+        "Solves the stale-air problem room purifiers can't",
+      ],
+    },
+    {
+      kind: "Purification",
+      title: "Purification — pollutants, out",
+      points: [
+        "Multi-stage H14 HEPA + deep-bed activated carbon",
+        "99.5% efficient down to 0.3 µm — no ozone, no ionization",
+        "Keeps indoor PM2.5 in the single digits (< 5 µg/m³)",
+        "Filters guaranteed and serviced for 20+ years",
+      ],
+    },
   ],
 } as const;
 
-export const nav = [
-  { label: "Why Partner", href: "#why-partner" },
-  { label: "Who It's For", href: "#who" },
-  { label: "Why YOGa", href: "#why-yoga" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Benefits", href: "#benefits" },
-  { label: "FAQ", href: "#faq" },
+/** Every premium space the Y-CAB is designed for (brochure "Best For"). */
+export const spaces = [
+  { title: "Luxury Homes", body: "Whole-home clean air across 1,500 sq.ft per unit." },
+  { title: "Schools", body: "Protect developing lungs across classrooms and floors." },
+  { title: "Corporate Offices", body: "Lower CO₂ and PM2.5 for sharper, healthier teams." },
+  { title: "Clinics & Hospitals", body: "Hospital-grade air where health matters most." },
+  { title: "Gyms & Studios", body: "Clean, oxygen-rich air for people breathing hard." },
+  { title: "Hospitality", body: "A memorable wellness signature guests can feel." },
 ] as const;
 
 /** Headline stats — all verified in the brochure. */
