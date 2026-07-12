@@ -28,9 +28,9 @@ import {
 const initialState: PartnerActionState = { status: "idle", message: "" };
 
 const perks = [
-  "Dedicated partner manager for every referral",
+  "Free to join — no cost, no commitment",
+  "Dedicated partner manager for every introduction",
   "Free on-site IAQ consultation for your clients",
-  "Co-branded marketing collateral & renders",
   "Structured referral rewards on every install",
 ];
 
@@ -63,7 +63,7 @@ export function PartnerForm() {
               align="left"
               eyebrow="Become a partner"
               title="Join the PureHabitat partner network."
-              description="Tell us a little about your practice. Our partnerships team will reach out within two business days to get you set up."
+              description="Tell us a little about your practice. Our partnerships team will reach out within two business days — no cost to join, and your clients come first."
             />
             <ul className="mt-8 space-y-3.5">
               {perks.map((perk) => (

@@ -11,7 +11,7 @@ export const site = {
   tagline: "Purity for the places that matter most.",
   partnerOf: "YOGa Clean Air",
   description:
-    "PureHabitat is an authorized channel partner for YOGa Clean Air. We help architects, interior designers, luxury builders, HVAC consultants and real estate professionals bring hospital-grade clean air to the homes they create.",
+    "PureHabitat is an authorized channel partner for YOGa Clean Air. We partner with interior designers, architects, luxury builders and home-automation companies to bring hospital-grade clean air to the homes they create.",
   url: "https://mypurehabitat.com",
   email: "partners@mypurehabitat.com",
   contacts: [
@@ -22,10 +22,10 @@ export const site = {
 
 export const nav = [
   { label: "Why Partner", href: "#why-partner" },
+  { label: "Who It's For", href: "#who" },
   { label: "Why YOGa", href: "#why-yoga" },
   { label: "How It Works", href: "#how-it-works" },
   { label: "Benefits", href: "#benefits" },
-  { label: "Resources", href: "#resources" },
   { label: "FAQ", href: "#faq" },
 ] as const;
 
@@ -39,27 +39,55 @@ export const heroStats = [
 
 export const whyPartner = {
   eyebrow: "Why partner with PureHabitat",
-  title: "Add a wellness layer your clients can feel — and thank you for.",
-  lead: "Luxury clients already invest in organic food and filtered water. Clean air is the most impactful, most overlooked upgrade — and it becomes part of your signature.",
+  title: "The professionals who shape luxury spaces make the biggest impact.",
+  lead: "You already serve affluent clients who care about wellness. Recommending YOGa Clean Air adds a signature upgrade to your projects — and one introduction can become qualified buyers for years.",
   points: [
     {
-      title: "Deliver genuinely healthier homes",
-      body: "YOGa keeps indoor PM2.5 in the single digits and continuously flushes CO₂ — an outcome your clients notice in their sleep, energy and everyday comfort.",
+      title: "Serve clients who already value wellness",
+      body: "Your clients invest in organic food and filtered water. Clean air is the natural next upgrade — introduced by someone they already trust: you.",
     },
     {
-      title: "Elevate premium projects",
-      body: "A ductless or minimal-duct system that preserves ceiling heights and open-air aesthetics — clean air that integrates into the design instead of fighting it.",
+      title: "One introduction, many buyers",
+      body: "A single professional relationship can introduce multiple qualified buyers over time — far more scalable than reaching homeowners one by one.",
     },
     {
-      title: "Deepen client trust",
-      body: "IIT Delhi–validated performance and a 365-day clean-air guarantee mean you recommend with evidence, not marketing claims.",
+      title: "Differentiate every project",
+      body: "Hospital-grade clean air is a rare, memorable amenity that sets your work apart, gets talked about, and preserves the architecture with a ductless system.",
     },
     {
       title: "Zero operational burden",
-      body: "You refer; PureHabitat handles the IAQ consultation, installation and lifetime white-glove service. Your relationship stays about design.",
+      body: "You make the introduction; PureHabitat handles the IAQ consultation, installation and lifetime white-glove service. Your name stays on the relationship.",
     },
   ],
 } as const;
+
+/** High-value professional categories we build relationships with. */
+export const targetProfessionals = [
+  {
+    title: "Interior Designers",
+    body: "Add air your clients can feel to every space you style — a wellness layer that elevates the entire design.",
+    image: "/img/leaf.jpg",
+    alt: "Fresh green leaf with dew, representing clean air",
+  },
+  {
+    title: "Architects",
+    body: "Specify clean air into the build from day one. A ductless, minimal-duct system preserves ceiling heights and open volumes.",
+    image: "/img/sky.jpg",
+    alt: "Clear blue sky with soft clouds",
+  },
+  {
+    title: "Luxury Builders & Developers",
+    body: "Offer a premium, sellable amenity that differentiates your homes and delights buyers long after handover.",
+    image: "/img/breathe.jpg",
+    alt: "Person breathing calmly in fresh air",
+  },
+  {
+    title: "Home Automation Companies",
+    body: "Fold certified clean air into your smart-home stack as a high-margin, health-first upgrade clients ask for by name.",
+    image: "/img/breeze.jpg",
+    alt: "Soft breeze moving through the air",
+  },
+] as const;
 
 /** Core YOGa advantages — from the brochure "ADVANTAGE" section. */
 export const yogaBenefits = [
@@ -167,8 +195,8 @@ export const howItWorks = [
   },
   {
     step: "02",
-    title: "Refer a client",
-    body: "Introduce a client or project. Send us the space details and we take it from there — your name stays on the relationship.",
+    title: "Introduce a client",
+    body: "Refer a client or project. Send us the space details and we take it from there — your name stays on the relationship.",
   },
   {
     step: "03",
@@ -182,8 +210,8 @@ export const howItWorks = [
   },
   {
     step: "05",
-    title: "Ongoing support",
-    body: "White-glove cyclic maintenance and a 24/7 service SLA keep the system — and your client relationship — running for years.",
+    title: "Earn & repeat",
+    body: "Receive your referral reward, and we keep the system running with white-glove service. Then introduce the next project — one relationship, many opportunities.",
   },
 ] as const;
 
@@ -267,6 +295,10 @@ export const faqs = [
     a: "Approximately ₹400–500 per month running 24/7 — less than the cost of one coffee a day for hospital-grade clean air in every room.",
   },
   {
+    q: "Is there any cost to become a partner?",
+    a: "No. Joining the PureHabitat partner network is free. You introduce clients and projects; we handle everything else — and reward you for every successful referral.",
+  },
+  {
     q: "What support do partners get after referring a client?",
     a: "PureHabitat handles the free IAQ consultation, installation and lifetime white-glove maintenance with a 24/7 service SLA and 20+ year parts guarantee. You stay focused on your client relationship.",
   },
@@ -277,11 +309,9 @@ export const faqs = [
 ] as const;
 
 export const businessTypes = [
-  "Architect",
   "Interior Designer",
+  "Architect",
   "Luxury Builder / Developer",
-  "HVAC Consultant",
-  "Smart Home Integrator",
-  "Luxury Real Estate Consultant",
+  "Home Automation Company",
   "Other",
 ] as const;

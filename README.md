@@ -2,13 +2,14 @@
 
 > Purity for the places that matter most.
 
-Premium partner-program landing page for **PureHabitat** — an authorized channel
-partner for **YOGa Clean Air**. Built to recruit a referral network of architects,
-interior designers, luxury builders, HVAC consultants, smart-home integrators and
-luxury real-estate consultants.
+Premium lead-generation landing page for **PureHabitat** — an authorized channel
+partner for **YOGa Clean Air**. Built to build relationships with the high-value
+professionals who already serve affluent clients: **interior designers,
+architects, luxury builders and home-automation companies**.
 
-This is **not** an ecommerce site. Its single goal is to turn design & building
-professionals into referral partners.
+This is **not** an ecommerce site, and it does **not** offer a referral-partner
+dashboard. Its single goal is to generate qualified partner leads — one
+professional introduction can become many buyers over time.
 
 ## Tech stack
 
@@ -23,11 +24,12 @@ professionals into referral partners.
 
 1. Hero — "Help your clients build healthier luxury homes."
 2. Why partner with PureHabitat
-3. Why YOGa Clean Air (benefits, IIT-Delhi verified results, Room Purifier vs ERV vs Y-CAB comparison, tech specs)
-4. How it works (5-step referral flow)
-5. Partner benefits
-6. Resources (brochure download, technical guide, FAQ)
-7. Become a partner form (stored in Supabase)
+3. Who it's for (interior designers, architects, luxury builders, home-automation companies)
+4. Why YOGa Clean Air (benefits, IIT-Delhi verified results, Room Purifier vs ERV vs Y-CAB comparison, tech specs)
+5. How it works (5-step referral flow)
+6. Partner benefits
+7. Resources (brochure download, technical guide, FAQ)
+8. Become a partner form (stored in Supabase)
 8. Book a demo (Calendly or contact fallback)
 9. FAQ
 10. Contact
@@ -72,28 +74,18 @@ Run `supabase/schema.sql` in the Supabase SQL editor to create the
 `partner_applications` table with row-level security (anonymous insert,
 authenticated read).
 
-## Deploying to Netlify
+## Deployment
 
-The repo includes `netlify.toml` and uses Netlify's official Next.js runtime
-(SSR + server actions supported — no static export).
-
-1. In Netlify, **Add new site → Import from Git** and pick `fofariak/purehabitat`.
-2. Netlify auto-detects the settings from `netlify.toml`
-   (build command `npm run build`, publish `.next`, Node 20, Next.js plugin).
-3. Add environment variables under **Site settings → Environment variables**
-   (same keys as `.env.example`) before the first build if you want Supabase /
-   Calendly live:
-   - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-   - `SUPABASE_SERVICE_ROLE_KEY` (optional)
-   - `NEXT_PUBLIC_CALENDLY_URL` (optional)
-4. Deploy. Every push to `main` triggers an automatic production deploy.
-
-The site builds and runs without any env vars — the form confirms receipt and
-the demo section shows the contact fallback until Supabase / Calendly are set.
+Deployed on **Netlify** (connected manually) using Netlify's official Next.js
+runtime, which supports SSR and server actions — no static export. Add the
+`.env.example` keys under **Site settings → Environment variables** to enable
+Supabase and Calendly. The site builds and runs without them: the form confirms
+receipt and the demo section shows a contact fallback.
 
 ## Roadmap
 
-- **Phase 1** — Partner CRM, Partner Dashboard, Authentication
-- **Phase 2** — AI Company Research, AI Outreach Generator
-- **Phase 3** — Referral Tracking, Analytics, AI Knowledge Assistant
+The focus is **lead generation and outreach**, not a partner-facing dashboard.
+
+- **Phase 1** — Internal lead inbox + partner CRM (identify & organize outreach to designers, architects, builders, home-automation firms), authentication
+- **Phase 2** — AI company research, AI outreach generator
+- **Phase 3** — Referral tracking, analytics, AI knowledge assistant

@@ -1,5 +1,6 @@
 import { Hero } from "@/components/sections/hero";
 import { WhyPartner } from "@/components/sections/why-partner";
+import { WhoWePartner } from "@/components/sections/who-we-partner";
 import { WhyYoga } from "@/components/sections/why-yoga";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { PartnerBenefits } from "@/components/sections/partner-benefits";
@@ -15,6 +16,7 @@ export default function Home() {
     <>
       <Hero />
       <WhyPartner />
+      <WhoWePartner />
       <WhyYoga />
       <HowItWorks />
       <PartnerBenefits />
