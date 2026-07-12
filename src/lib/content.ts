@@ -85,6 +85,16 @@ export const concept = {
   ],
 } as const;
 
+/** Editorial "brand moment" band — pairs the moodboard with the brand promise. */
+export const brandMoment = {
+  eyebrow: "The promise",
+  title: "Cleaner air. Healthier habitat.",
+  lead: "PureHabitat exists for one reason: to make the air inside the places you design, build and live in as pure as it can be. Not a gadget in the corner — a whole-space upgrade your clients feel the moment they walk in.",
+  pillars: ["Cleaner air", "Healthy habitat", "Pure living", "Breathe better"],
+  image: "/img/moodboard.jpg",
+  alt: "PureHabitat moodboard — cleaner air, healthy habitat, pure living, breathe better",
+} as const;
+
 /** Every premium space the Y-CAB is designed for (brochure "Best For"). */
 export const spaces = [
   { title: "Luxury Homes", body: "Whole-home clean air across 1,500 sq.ft per unit." },
@@ -130,28 +140,28 @@ export const whyPartner = {
 /** High-value professional categories we build relationships with. */
 export const targetProfessionals = [
   {
+    icon: "sofa",
+    tag: "Design",
     title: "Interior Designers",
     body: "Add air your clients can feel to every space you style — a wellness layer that elevates the entire design.",
-    image: "/img/leaf.jpg",
-    alt: "Fresh green leaf with dew, representing clean air",
   },
   {
+    icon: "compass",
+    tag: "Specify",
     title: "Architects",
     body: "Specify clean air into the build from day one. A ductless, minimal-duct system preserves ceiling heights and open volumes.",
-    image: "/img/sky.jpg",
-    alt: "Clear blue sky with soft clouds",
   },
   {
+    icon: "building",
+    tag: "Build",
     title: "Luxury Builders & Developers",
     body: "Offer a premium, sellable amenity that differentiates your homes and delights buyers long after handover.",
-    image: "/img/breathe.jpg",
-    alt: "Person breathing calmly in fresh air",
   },
   {
+    icon: "automation",
+    tag: "Integrate",
     title: "Home Automation Companies",
     body: "Fold certified clean air into your smart-home stack as a high-margin, health-first upgrade clients ask for by name.",
-    image: "/img/breeze.jpg",
-    alt: "Soft breeze moving through the air",
   },
 ] as const;
 

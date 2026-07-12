@@ -1,5 +1,6 @@
 import { Hero } from "@/components/sections/hero";
 import { Concept } from "@/components/sections/concept";
+import { BrandMoment } from "@/components/sections/brand-moment";
 import { WhyPartner } from "@/components/sections/why-partner";
 import { WhoWePartner } from "@/components/sections/who-we-partner";
 import { Spaces } from "@/components/sections/spaces";
@@ -18,6 +19,7 @@ export default function Home() {
     <>
       <Hero />
       <Concept />
+      <BrandMoment />
       <WhyPartner />
       <WhoWePartner />
       <Spaces />

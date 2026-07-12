@@ -32,19 +32,17 @@ export function LogoMark({ gradient = false, className, ...props }: LogoMarkProp
       )}
       <g
         stroke={stroke}
-        strokeWidth="1.7"
+        strokeWidth="1.6"
         strokeLinecap="round"
         strokeLinejoin="round"
       >
         <circle cx="24" cy="24" r="20.5" />
-        {/* Upper leaf (fresh air) */}
-        <path d="M24 5C31.5 11.5 31.5 19 24 23.7C16.5 19 16.5 11.5 24 5Z" />
+        {/* Upper leaf (fresh air) crossing the lower loop to form the mark */}
+        <path d="M24 5C15.2 13 15.2 26 24 32.5C32.8 26 32.8 13 24 5Z" />
         {/* Lower loop (constant purification) */}
-        <path d="M24 24.3C32.5 28.5 32.5 39 24 43C15.5 39 15.5 28.5 24 24.3Z" />
+        <path d="M24 20.5C14.3 27.5 14.3 40 24 44.5C33.7 40 33.7 27.5 24 20.5Z" />
         {/* Center vein */}
-        <path d="M24 5V43" />
-        {/* Leaf tip detail */}
-        <path d="M19.6 15L24 10.2L28.4 15" />
+        <path d="M24 5V44.5" />
       </g>
     </svg>
   );
