@@ -140,28 +140,32 @@ export const whyPartner = {
 /** High-value professional categories we build relationships with. */
 export const targetProfessionals = [
   {
-    icon: "sofa",
     tag: "Design",
     title: "Interior Designers",
     body: "Add air your clients can feel to every space you style — a wellness layer that elevates the entire design.",
+    image: "/img/interior.jpg",
+    alt: "Styled luxury living room with plants and a designer armchair",
   },
   {
-    icon: "compass",
     tag: "Specify",
     title: "Architects",
     body: "Specify clean air into the build from day one. A ductless, minimal-duct system preserves ceiling heights and open volumes.",
+    image: "/img/architect.jpg",
+    alt: "Architects reviewing building blueprints with a ruler and pen",
   },
   {
-    icon: "building",
     tag: "Build",
     title: "Luxury Builders & Developers",
     body: "Offer a premium, sellable amenity that differentiates your homes and delights buyers long after handover.",
+    image: "/img/builder.jpg",
+    alt: "High-rise buildings under construction with tower cranes",
   },
   {
-    icon: "automation",
     tag: "Integrate",
     title: "Home Automation Companies",
     body: "Fold certified clean air into your smart-home stack as a high-margin, health-first upgrade clients ask for by name.",
+    image: "/img/automation.jpg",
+    alt: "Smart-home devices controlled from a phone — lights and camera",
   },
 ] as const;
 
@@ -252,15 +256,12 @@ export const techSpecs = [
   { label: "Airflow", value: "500 CFM max" },
   { label: "Coverage", value: "1,500 sq.ft per unit" },
   { label: "Power", value: "30–170 Watts" },
-  { label: "Fan type", value: "EC fan — 10 speed levels" },
   { label: "Efficiency", value: "99.5% down to 0.3 µm" },
   { label: "Filter media", value: "Synthetic micropore + H14 HEPA" },
+  { label: "Fan type", value: "EC fan — 10 speed levels" },
   { label: "Mounting", value: "Wall / floor / ceiling" },
   { label: "Dimensions", value: "580 × 350 × 380 mm" },
-  { label: "Weight", value: "22 kg" },
-  { label: "Ozone / ionization", value: "None — pure passive filtration" },
   { label: "Running cost", value: "≈ ₹400–500 / month, 24/7" },
-  { label: "Best for", value: "Premium homes, schools, offices, clinics" },
 ] as const;
 
 export const howItWorks = [
@@ -307,14 +308,6 @@ export const partnerBenefits = [
   {
     title: "Training & enablement",
     body: "Product and IAQ training so your team can speak to clean air with authority.",
-  },
-  {
-    title: "Referral rewards",
-    body: "A structured referral program that recognizes and rewards every successful installation.",
-  },
-  {
-    title: "White-glove fulfilment",
-    body: "PureHabitat owns consultation, install and lifetime service — you stay focused on design.",
   },
 ] as const;
 

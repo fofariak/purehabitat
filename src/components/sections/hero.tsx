@@ -41,9 +41,9 @@ export function Hero() {
               style={{ animationDelay: "0.14s" }}
             >
               PureHabitat partners with interior designers, architects, luxury
-              builders and home-automation companies. Recommend YOGa Clean Air to
-              the clients you already serve — and one introduction can become
-              qualified buyers for years. You refer; we handle everything else.
+              builders and home-automation companies to bring hospital-grade
+              clean air to the homes they create. You make the introduction — we
+              handle consultation, installation and lifetime service.
             </p>
 
             <div

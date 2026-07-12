@@ -1,18 +1,11 @@
-import {
-  Headphones,
-  Wrench,
-  Megaphone,
-  GraduationCap,
-  Gift,
-  Sparkles,
-} from "lucide-react";
+import { Headphones, Wrench, Megaphone, GraduationCap } from "lucide-react";
 
 import { partnerBenefits } from "@/lib/content";
 import { SectionHeading } from "@/components/section-heading";
 import { StaggerGroup, StaggerItem } from "@/components/reveal";
 import { Card } from "@/components/ui/card";
 
-const icons = [Headphones, Wrench, Megaphone, GraduationCap, Gift, Sparkles];
+const icons = [Headphones, Wrench, Megaphone, GraduationCap];
 
 export function PartnerBenefits() {
   return (
@@ -24,10 +17,10 @@ export function PartnerBenefits() {
         <SectionHeading
           eyebrow="Partner benefits"
           title="Everything you need to recommend with confidence."
-          description="We invest in our partners with real support, tools and rewards — not just a logo to put on a deck."
+          description="We invest in our partners with real support, tools and training — not just a logo to put on a deck."
         />
 
-        <StaggerGroup className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <StaggerGroup className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {partnerBenefits.map((benefit, i) => {
             const Icon = icons[i % icons.length];
             return (
