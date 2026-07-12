@@ -12,8 +12,8 @@ export const site = {
   partnerOf: "YOGa Clean Air",
   description:
     "PureHabitat is an authorized channel partner for YOGa Clean Air. We help architects, interior designers, luxury builders, HVAC consultants and real estate professionals bring hospital-grade clean air to the homes they create.",
-  url: "https://purehabitat.in",
-  email: "partners@purehabitat.in",
+  url: "https://mypurehabitat.com",
+  email: "partners@mypurehabitat.com",
   contacts: [
     { name: "Miren", phone: "+91 98798 69406", tel: "+919879869406" },
     { name: "Karan", phone: "+91 96574 41692", tel: "+919657441692" },
