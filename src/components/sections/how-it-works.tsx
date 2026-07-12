@@ -4,7 +4,7 @@ import { StaggerGroup, StaggerItem } from "@/components/reveal";
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="scroll-mt-24 py-20 sm:py-28">
+    <section id="how-it-works" className="scroll-mt-24 py-16 sm:py-28">
       <div className="container-px mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="How it works"

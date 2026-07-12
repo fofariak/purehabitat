@@ -7,7 +7,7 @@ import { StaggerGroup, StaggerItem } from "@/components/reveal";
 
 export function Resources() {
   return (
-    <section id="resources" className="scroll-mt-24 py-20 sm:py-28">
+    <section id="resources" className="scroll-mt-24 py-16 sm:py-28">
       <div className="container-px mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Resources"

@@ -8,7 +8,7 @@ const pillarIcons = [Leaf, InfinityIcon, Circle];
 
 export function Concept() {
   return (
-    <section id="concept" className="scroll-mt-24 py-20 sm:py-28">
+    <section id="concept" className="scroll-mt-24 py-16 sm:py-28">
       <div className="container-px mx-auto max-w-6xl">
         <SectionHeading
           eyebrow={concept.eyebrow}

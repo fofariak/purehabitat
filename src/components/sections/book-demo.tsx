@@ -14,7 +14,7 @@ const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL;
 
 export function BookDemo() {
   return (
-    <section id="book-demo" className="scroll-mt-24 py-20 sm:py-28">
+    <section id="book-demo" className="scroll-mt-24 py-16 sm:py-28">
       <div className="container-px mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Book a demo"

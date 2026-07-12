@@ -70,6 +70,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${sora.variable}`}>
+      <head>
+        <noscript>
+          {/* If JS is unavailable, never leave scroll-reveal content hidden */}
+          <style>{`.ph-reveal{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
+      </head>
       <body className="min-h-dvh antialiased">
         <ThemeProvider
           attribute="class"

@@ -18,7 +18,7 @@ export function PartnerBenefits() {
   return (
     <section
       id="benefits"
-      className="scroll-mt-24 border-y border-border bg-secondary/30 py-20 sm:py-28"
+      className="scroll-mt-24 border-y border-border bg-secondary/30 py-16 sm:py-28"
     >
       <div className="container-px mx-auto max-w-6xl">
         <SectionHeading

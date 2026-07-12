@@ -1,7 +1,5 @@
-"use client";
-
+import type { CSSProperties } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { ArrowRight, CalendarClock, Filter, ShieldCheck, Wind } from "lucide-react";
 
 import { heroStats, site } from "@/lib/content";
@@ -10,56 +8,47 @@ import { LogoMark } from "@/components/logo";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
-      {/* Ambient background — matches the logo's blue → teal gradient */}
+    <section className="relative overflow-hidden pt-28 pb-16 sm:pt-40 sm:pb-28">
+      {/* Ambient background — matches the logo's blue → teal gradient.
+          Heavy blur blobs are desktop-only to keep mobile paint cheap. */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 grid-fade opacity-60" />
-        <div className="absolute -left-[10%] top-[-15%] h-[560px] w-[560px] rounded-full bg-brand-blue/25 blur-[120px]" />
-        <div className="absolute -right-[8%] top-[-5%] h-[520px] w-[520px] rounded-full bg-brand-teal/25 blur-[120px]" />
-        <div className="absolute bottom-[-20%] left-1/2 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-brand-sky/20 blur-[120px]" />
+        <div className="absolute -left-[10%] top-[-15%] hidden h-[520px] w-[520px] rounded-full bg-brand-blue/25 blur-[90px] sm:block" />
+        <div className="absolute -right-[8%] top-[-5%] hidden h-[480px] w-[480px] rounded-full bg-brand-teal/25 blur-[90px] sm:block" />
+        <div className="absolute bottom-[-20%] left-1/2 hidden h-[400px] w-[680px] -translate-x-1/2 rounded-full bg-brand-sky/20 blur-[90px] lg:block" />
       </div>
 
       <div className="container-px mx-auto max-w-6xl">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
           <div>
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
-            >
+            <div className="ph-in">
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/60 px-3.5 py-1.5 text-xs font-medium tracking-wide text-muted-foreground">
                 <ShieldCheck className="size-3.5 text-brand-teal" />
                 Authorized channel partner · {site.partnerOf}
               </span>
-            </motion.div>
+            </div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 22 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.06, ease: [0.21, 0.47, 0.32, 0.98] }}
-              className="mt-6 font-display text-4xl font-semibold leading-[1.06] tracking-tight text-balance sm:text-5xl md:text-6xl"
+            <h1
+              className="ph-in mt-6 font-display text-[2rem] font-semibold leading-[1.08] tracking-tight text-balance sm:text-5xl md:text-6xl"
+              style={{ animationDelay: "0.06s" }}
             >
               Help your clients build{" "}
               <span className="text-gradient">healthier luxury homes.</span>
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 22 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.14, ease: [0.21, 0.47, 0.32, 0.98] }}
-              className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground"
+            <p
+              className="ph-in mt-5 max-w-xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg"
+              style={{ animationDelay: "0.14s" }}
             >
               PureHabitat partners with interior designers, architects, luxury
               builders and home-automation companies. Recommend YOGa Clean Air to
               the clients you already serve — and one introduction can become
               qualified buyers for years. You refer; we handle everything else.
-            </motion.p>
+            </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 22 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.22, ease: [0.21, 0.47, 0.32, 0.98] }}
-              className="mt-8 flex flex-col gap-3 sm:flex-row"
+            <div
+              className="ph-in mt-8 flex flex-col gap-3 sm:flex-row"
+              style={{ animationDelay: "0.22s" }}
             >
               <Button asChild variant="brand" size="lg">
                 <Link href="#become-partner">
@@ -73,20 +62,20 @@ export function Hero() {
                   Book a demo
                 </Link>
               </Button>
-            </motion.div>
+            </div>
 
-            <p className="mt-5 text-sm text-muted-foreground">{site.tagline}</p>
+            <p className="ph-in mt-5 text-sm text-muted-foreground" style={{ animationDelay: "0.3s" }}>
+              {site.tagline}
+            </p>
           </div>
 
           <HeroVisual />
         </div>
 
         {/* Stats */}
-        <motion.dl
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.35, ease: [0.21, 0.47, 0.32, 0.98] }}
-          className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:mt-20 lg:grid-cols-4"
+        <dl
+          className="ph-in mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:mt-20 lg:grid-cols-4"
+          style={{ animationDelay: "0.38s" }}
         >
           {heroStats.map((stat) => (
             <div key={stat.label} className="bg-card p-5 sm:p-6">
@@ -97,7 +86,7 @@ export function Hero() {
               <dd className="mt-1 text-xs text-muted-foreground">{stat.sub}</dd>
             </div>
           ))}
-        </motion.dl>
+        </dl>
       </div>
     </section>
   );
@@ -105,12 +94,7 @@ export function Hero() {
 
 function HeroVisual() {
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.96 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.9, delay: 0.2, ease: [0.21, 0.47, 0.32, 0.98] }}
-      className="relative mx-auto w-full max-w-md"
-    >
+    <div className="ph-in relative mx-auto w-full max-w-sm sm:max-w-md" style={{ animationDelay: "0.2s" }}>
       {/* Branded "clean air bubble" panel */}
       <div className="relative aspect-square overflow-hidden rounded-[2rem] border border-brand-navy/20 bg-brand-navy shadow-xl">
         <div
@@ -122,33 +106,28 @@ function HeroVisual() {
           }}
         />
 
-        {/* Concentric bubble rings */}
-        <div className="absolute inset-0 flex items-center justify-center">
+        {/* Concentric bubble rings (CSS-only) */}
+        <div aria-hidden className="absolute inset-0 flex items-center justify-center">
           {[0, 1, 2, 3].map((i) => (
-            <motion.div
+            <div
               key={i}
-              className="absolute rounded-full border border-white/15"
-              style={{ inset: `${8 + i * 11}%` }}
-              animate={{ scale: [1, 1.03, 1], opacity: [0.4, 0.8, 0.4] }}
-              transition={{
-                duration: 5 + i,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: i * 0.35,
-              }}
+              className="ph-ring absolute rounded-full border border-white/15"
+              style={
+                {
+                  inset: `${8 + i * 11}%`,
+                  "--ph-ring-dur": `${5 + i}s`,
+                  animationDelay: `${i * 0.35}s`,
+                } as CSSProperties
+              }
             />
           ))}
         </div>
 
         {/* Logo mark */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <motion.div
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="flex size-32 items-center justify-center rounded-[1.75rem] border border-white/15 bg-white/5 backdrop-blur-sm"
-          >
-            <LogoMark className="size-20 text-white" />
-          </motion.div>
+          <div className="ph-float flex size-28 items-center justify-center rounded-[1.75rem] border border-white/15 bg-white/5 sm:size-32">
+            <LogoMark className="size-16 text-white sm:size-20" />
+          </div>
         </div>
 
         {/* Caption */}
@@ -160,27 +139,22 @@ function HeroVisual() {
         </div>
       </div>
 
-      {/* Floating pills — ventilation + purification */}
-      <motion.div
-        className="absolute -left-3 top-10 hidden sm:block"
-        animate={{ y: [0, -8, 0] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-      >
+      {/* Floating pills — ventilation + purification (desktop only) */}
+      <div className="ph-float absolute -left-3 top-10 hidden sm:block">
         <div className="glass ring-hairline flex items-center gap-2 rounded-full px-3.5 py-2 shadow-lg">
           <Wind className="size-4 text-brand-blue" />
           <span className="text-sm font-medium">Ventilation</span>
         </div>
-      </motion.div>
-      <motion.div
-        className="absolute -right-3 bottom-16 hidden sm:block"
-        animate={{ y: [0, -8, 0] }}
-        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+      </div>
+      <div
+        className="ph-float absolute -right-3 bottom-16 hidden sm:block"
+        style={{ animationDelay: "0.6s" }}
       >
         <div className="glass ring-hairline flex items-center gap-2 rounded-full px-3.5 py-2 shadow-lg">
           <Filter className="size-4 text-brand-teal" />
           <span className="text-sm font-medium">Purification</span>
         </div>
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 }

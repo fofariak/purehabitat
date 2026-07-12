@@ -1,9 +1,44 @@
 "use client";
 
 import * as React from "react";
-import { motion, useReducedMotion, type Variants } from "framer-motion";
 
 import { cn } from "@/lib/utils";
+
+/**
+ * Reveal-on-scroll without an animation library.
+ *
+ * A single IntersectionObserver toggles an `is-visible` class; the actual
+ * animation is a plain CSS transition (see `.ph-reveal` in globals.css). This
+ * keeps ~0 KB of JS on the wire compared with a motion library and stays cheap
+ * on mobile because it only animates opacity + transform (compositor only).
+ */
+function useInView<T extends HTMLElement>() {
+  const ref = React.useRef<T>(null);
+  const [inView, setInView] = React.useState(false);
+
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el || inView) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setInView(true);
+            io.disconnect();
+            break;
+          }
+        }
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
+    );
+
+    io.observe(el);
+    return () => io.disconnect();
+  }, [inView]);
+
+  return { ref, inView };
+}
 
 type RevealProps = {
   children: React.ReactNode;
@@ -13,36 +48,23 @@ type RevealProps = {
 };
 
 export function Reveal({ children, className, delay = 0, y = 24 }: RevealProps) {
-  const reduce = useReducedMotion();
+  const { ref, inView } = useInView<HTMLDivElement>();
 
   return (
-    <motion.div
-      className={className}
-      initial={reduce ? { opacity: 0 } : { opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
+    <div
+      ref={ref}
+      className={cn("ph-reveal", inView && "is-visible", className)}
+      style={
+        {
+          "--ph-y": `${y}px`,
+          transitionDelay: delay ? `${delay}s` : undefined,
+        } as React.CSSProperties
+      }
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
-
-const containerVariants: Variants = {
-  hidden: {},
-  show: {
-    transition: { staggerChildren: 0.1, delayChildren: 0.05 },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, ease: [0.21, 0.47, 0.32, 0.98] },
-  },
-};
 
 export function StaggerGroup({
   children,
@@ -51,16 +73,15 @@ export function StaggerGroup({
   children: React.ReactNode;
   className?: string;
 }) {
+  const { ref, inView } = useInView<HTMLDivElement>();
+
   return (
-    <motion.div
-      className={className}
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: "-60px" }}
+    <div
+      ref={ref}
+      className={cn("ph-stagger", inView && "is-visible", className)}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -71,9 +92,5 @@ export function StaggerItem({
   children: React.ReactNode;
   className?: string;
 }) {
-  return (
-    <motion.div className={cn(className)} variants={itemVariants}>
-      {children}
-    </motion.div>
-  );
+  return <div className={cn("ph-reveal", className)}>{children}</div>;
 }

@@ -8,7 +8,7 @@ import { Reveal } from "@/components/reveal";
 
 export function BrandMoment() {
   return (
-    <section className="scroll-mt-24 border-y border-border bg-secondary/30 py-20 sm:py-28">
+    <section className="scroll-mt-24 border-y border-border bg-secondary/30 py-16 sm:py-28">
       <div className="container-px mx-auto max-w-6xl">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <Reveal>
@@ -45,15 +45,15 @@ export function BrandMoment() {
             <div className="relative mx-auto w-full max-w-md">
               <div
                 aria-hidden
-                className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-brand-gradient opacity-20 blur-3xl"
+                className="absolute -inset-6 -z-10 hidden rounded-[2.5rem] bg-brand-gradient opacity-20 blur-3xl sm:block"
               />
               <div className="overflow-hidden rounded-3xl border border-border shadow-xl">
                 <Image
                   src={brandMoment.image}
                   alt={brandMoment.alt}
-                  width={818}
-                  height={1024}
-                  sizes="(max-width: 1024px) 100vw, 480px"
+                  width={760}
+                  height={951}
+                  sizes="(max-width: 1024px) 90vw, 480px"
                   className="h-auto w-full object-cover"
                 />
               </div>

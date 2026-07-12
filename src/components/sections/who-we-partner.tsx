@@ -14,7 +14,7 @@ const icons: Record<string, LucideIcon> = {
 
 export function WhoWePartner() {
   return (
-    <section id="who" className="scroll-mt-24 py-20 sm:py-28">
+    <section id="who" className="scroll-mt-24 py-16 sm:py-28">
       <div className="container-px mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Who it's for"
@@ -48,11 +48,11 @@ export function WhoWePartner() {
                       ))}
                     </div>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="flex size-16 items-center justify-center rounded-2xl border border-white/15 bg-white/10 backdrop-blur-sm transition-transform duration-500 group-hover:scale-110">
+                      <div className="flex size-16 items-center justify-center rounded-2xl border border-white/15 bg-white/15 transition-transform duration-500 group-hover:scale-110">
                         <Icon className="size-8 text-white" strokeWidth={1.5} />
                       </div>
                     </div>
-                    <span className="absolute left-3 top-3 rounded-full border border-white/15 bg-white/10 px-2.5 py-1 text-[11px] font-medium tracking-wide text-white/90 backdrop-blur-sm">
+                    <span className="absolute left-3 top-3 rounded-full border border-white/15 bg-white/15 px-2.5 py-1 text-[11px] font-medium tracking-wide text-white/90">
                       {pro.tag}
                     </span>
                   </div>

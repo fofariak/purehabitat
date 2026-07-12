@@ -54,7 +54,7 @@ export function PartnerForm() {
   return (
     <section
       id="become-partner"
-      className="scroll-mt-24 border-t border-border bg-secondary/30 py-20 sm:py-28"
+      className="scroll-mt-24 border-t border-border bg-secondary/30 py-16 sm:py-28"
     >
       <div className="container-px mx-auto max-w-6xl">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">

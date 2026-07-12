@@ -9,7 +9,7 @@ const icons = [HeartPulse, Building2, ShieldCheck, Sparkles];
 
 export function WhyPartner() {
   return (
-    <section id="why-partner" className="scroll-mt-24 py-20 sm:py-28">
+    <section id="why-partner" className="scroll-mt-24 py-16 sm:py-28">
       <div className="container-px mx-auto max-w-6xl">
         <SectionHeading
           eyebrow={whyPartner.eyebrow}

@@ -9,17 +9,17 @@ import { WhatsAppIcon } from "@/components/whatsapp-button";
 
 export function Contact() {
   return (
-    <section id="contact" className="scroll-mt-24 py-20 sm:py-28">
+    <section id="contact" className="scroll-mt-24 py-16 sm:py-28">
       <div className="container-px mx-auto max-w-6xl">
         <Reveal>
           <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-sm sm:p-12 lg:p-16">
             <div
               aria-hidden
-              className="pointer-events-none absolute -right-16 -top-16 size-64 rounded-full bg-brand-gradient opacity-[0.12] blur-3xl"
+              className="pointer-events-none absolute -right-16 -top-16 hidden size-64 rounded-full bg-brand-gradient opacity-[0.12] blur-3xl sm:block"
             />
             <div
               aria-hidden
-              className="pointer-events-none absolute -bottom-20 -left-16 size-64 rounded-full bg-brand-gradient opacity-[0.1] blur-3xl"
+              className="pointer-events-none absolute -bottom-20 -left-16 hidden size-64 rounded-full bg-brand-gradient opacity-[0.1] blur-3xl sm:block"
             />
 
             <div className="relative grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-center">
