@@ -72,6 +72,26 @@ Run `supabase/schema.sql` in the Supabase SQL editor to create the
 `partner_applications` table with row-level security (anonymous insert,
 authenticated read).
 
+## Deploying to Netlify
+
+The repo includes `netlify.toml` and uses Netlify's official Next.js runtime
+(SSR + server actions supported — no static export).
+
+1. In Netlify, **Add new site → Import from Git** and pick `fofariak/purehabitat`.
+2. Netlify auto-detects the settings from `netlify.toml`
+   (build command `npm run build`, publish `.next`, Node 20, Next.js plugin).
+3. Add environment variables under **Site settings → Environment variables**
+   (same keys as `.env.example`) before the first build if you want Supabase /
+   Calendly live:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - `SUPABASE_SERVICE_ROLE_KEY` (optional)
+   - `NEXT_PUBLIC_CALENDLY_URL` (optional)
+4. Deploy. Every push to `main` triggers an automatic production deploy.
+
+The site builds and runs without any env vars — the form confirms receipt and
+the demo section shows the contact fallback until Supabase / Calendly are set.
+
 ## Roadmap
 
 - **Phase 1** — Partner CRM, Partner Dashboard, Authentication
