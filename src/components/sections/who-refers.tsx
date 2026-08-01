@@ -17,7 +17,7 @@ export function WhoWeReferWith() {
         <StaggerGroup className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {targetProfessionals.map((pro) => (
             <StaggerItem key={pro.title}>
-              <article className="group h-full overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+              <article className="group h-full overflow-hidden rounded-2xl border border-border bg-card shadow-sm lift">
                 <div className="relative aspect-[5/4] overflow-hidden">
                   <Image
                     src={pro.image}

@@ -24,7 +24,7 @@ export function Hero() {
             <div className="ph-in flex flex-wrap items-center gap-2">
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/60 px-3.5 py-1.5 text-xs font-medium tracking-wide text-muted-foreground">
                 <ShieldCheck className="size-3.5 text-brand-teal" />
-                Authorized channel partner · {site.partnerOf}
+                {site.authorization} · {site.brand}
               </span>
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/60 px-3.5 py-1.5 text-xs font-medium tracking-wide text-muted-foreground">
                 <MapPin className="size-3.5 text-brand-blue" />
@@ -33,7 +33,7 @@ export function Hero() {
             </div>
 
             <h1
-              className="ph-in mt-6 font-display text-[2rem] font-semibold leading-[1.08] tracking-tight text-balance sm:text-5xl md:text-6xl"
+              className="ph-in mt-6 font-display text-[2.15rem] font-semibold leading-[1.05] tracking-[-0.035em] text-balance sm:text-[3.25rem] md:text-[4rem]"
               style={{ animationDelay: "0.06s" }}
             >
               Hospital-grade clean air for{" "}
@@ -82,9 +82,12 @@ export function Hero() {
           style={{ animationDelay: "0.38s" }}
         >
           {heroStats.map((stat) => (
-            <div key={stat.label} className="bg-card p-5 sm:p-6">
+            <div
+              key={stat.label}
+              className="bg-card p-5 transition-colors duration-300 hover:bg-secondary/50 sm:p-6"
+            >
               <dt className="text-sm text-muted-foreground">{stat.label}</dt>
-              <dd className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+              <dd className="mt-2 font-display text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">
                 {stat.value}
               </dd>
               <dd className="mt-1 text-xs text-muted-foreground">{stat.sub}</dd>

@@ -25,8 +25,13 @@ export function LogoMark({ gradient = false, className, ...props }: LogoMarkProp
       {gradient && (
         <defs>
           <linearGradient id="ph-logo-gradient" x1="6" y1="4" x2="42" y2="44" gradientUnits="userSpaceOnUse">
-            <stop stopColor="var(--brand-blue)" />
-            <stop offset="1" stopColor="var(--brand-teal)" />
+            {/*
+              Set via `style`, not the stop-color attribute: var() is unreliable
+              inside SVG presentation attributes, which silently drops the
+              gradient (and so the whole mark) in some browsers.
+            */}
+            <stop style={{ stopColor: "var(--brand-blue, #1B5BFF)" }} />
+            <stop offset="1" style={{ stopColor: "var(--brand-teal, #14C08A)" }} />
           </linearGradient>
         </defs>
       )}

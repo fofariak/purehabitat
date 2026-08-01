@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
  *
  * Professionals earn a referral reward; end clients can't be given one, so they
  * get a free on-site assessment instead. Keeping both visible up front means a
- * gym owner or school never has to read partner-facing copy to find their path.
+ * gym owner or school never has to read referral copy to find their own path.
  */
 export function Tracks() {
   return (
@@ -59,7 +59,7 @@ function TrackCard({
       className={
         featured
           ? "relative flex h-full flex-col overflow-hidden rounded-3xl border border-brand-navy/20 bg-brand-navy p-8 text-white shadow-xl sm:p-10"
-          : "relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-sm transition-shadow duration-300 hover:shadow-lg sm:p-10"
+          : "lift relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-sm sm:p-10"
       }
     >
       {featured && (

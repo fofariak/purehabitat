@@ -15,8 +15,8 @@ export function Footer() {
               {site.tagline}
             </p>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Authorized channel partner for{" "}
-              <span className="font-medium text-foreground">{site.partnerOf}</span>.
+              {site.authorization} for{" "}
+              <span className="font-medium text-foreground">{site.brand}</span>.
             </p>
             <p className="mt-3 inline-flex items-center gap-2 text-sm text-muted-foreground">
               <MapPin className="size-4" />

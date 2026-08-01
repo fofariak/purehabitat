@@ -33,7 +33,7 @@ export function SectionHeading({
         </Reveal>
       )}
       <Reveal delay={0.05}>
-        <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
+        <h2 className="font-display text-3xl font-semibold tracking-[-0.03em] text-balance sm:text-4xl md:text-[2.85rem] md:leading-[1.08]">
           {title}
         </h2>
       </Reveal>

@@ -103,7 +103,7 @@ export default function Image() {
             "< 5 µg/m³ indoor PM2.5",
             "10+ spaces delivered",
             site.coverage,
-            `Channel partner · ${site.partnerOf}`,
+            `${site.authorization} · ${site.brand}`,
           ].map((chip) => (
             <div
               key={chip}

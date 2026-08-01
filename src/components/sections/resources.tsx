@@ -23,7 +23,7 @@ export function Resources() {
                 {...(res.download
                   ? { download: true, target: "_blank", rel: "noopener noreferrer" }
                   : {})}
-                className="group flex h-full flex-col rounded-2xl border border-border bg-card p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                className="group flex h-full flex-col rounded-2xl border border-border bg-card p-7 lift"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex size-11 items-center justify-center rounded-xl bg-accent text-accent-foreground">

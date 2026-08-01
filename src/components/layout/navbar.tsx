@@ -10,6 +10,11 @@ import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
 import { ThemeToggle } from "@/components/theme-toggle";
 
+/**
+ * Floating pill navbar: flush and transparent at the top of the page, then it
+ * detaches into a glass pill once you scroll. Keeps the hero uncluttered while
+ * giving the nav a clear surface over the busy sections further down.
+ */
 export function Navbar() {
   const [scrolled, setScrolled] = React.useState(false);
   const [open, setOpen] = React.useState(false);
@@ -28,76 +33,97 @@ export function Navbar() {
     };
   }, [open]);
 
+  // Close the drawer if the viewport grows past the mobile breakpoint.
+  React.useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const onChange = () => mq.matches && setOpen(false);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled
-          ? "border-b border-border/70 glass"
-          : "border-b border-transparent",
-      )}
-    >
-      <nav className="container-px mx-auto flex h-16 max-w-6xl items-center justify-between">
-        <Link href="/" className="shrink-0" aria-label="PureHabitat home">
-          <Logo />
-        </Link>
-
-        <div className="hidden items-center gap-1 lg:flex">
-          {nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-full px-3.5 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </div>
-
-        <div className="flex items-center gap-2">
-          <ThemeToggle />
-          <Button asChild variant="ghost" size="sm" className="hidden md:inline-flex">
-            <Link href="#assessment">Free assessment</Link>
-          </Button>
-          <Button asChild variant="brand" size="sm" className="hidden sm:inline-flex">
-            <Link href="#join">Refer &amp; earn</Link>
-          </Button>
-          <button
-            type="button"
-            aria-label="Toggle menu"
-            className="inline-flex size-10 items-center justify-center rounded-full text-foreground lg:hidden"
-            onClick={() => setOpen((v) => !v)}
-          >
-            {open ? <X className="size-5" /> : <Menu className="size-5" />}
-          </button>
-        </div>
-      </nav>
-
-      {/* Mobile drawer */}
+    <header className="fixed inset-x-0 top-0 z-50">
       <div
         className={cn(
-          "lg:hidden overflow-hidden border-t border-border/70 glass transition-[max-height,opacity] duration-300",
-          open ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0",
+          "mx-auto transition-all duration-500 ease-out",
+          scrolled ? "max-w-5xl px-3 pt-3" : "max-w-6xl px-0 pt-0",
         )}
       >
-        <div className="container-px mx-auto flex max-w-6xl flex-col gap-1 py-4">
-          {nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className="rounded-xl px-4 py-3 text-base font-medium text-foreground/90 transition-colors hover:bg-secondary"
+        <nav
+          className={cn(
+            "flex items-center justify-between transition-all duration-500 ease-out",
+            scrolled
+              ? "h-14 rounded-full border border-border/70 glass px-3 shadow-lg shadow-brand-navy/5 sm:px-4"
+              : "container-px h-16 border border-transparent",
+          )}
+        >
+          <Link
+            href="/"
+            className="shrink-0 rounded-full transition-opacity hover:opacity-80"
+            aria-label="PureHabitat home"
+          >
+            <Logo />
+          </Link>
+
+          <div className="hidden items-center gap-0.5 lg:flex">
+            {nav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-1.5">
+            <ThemeToggle />
+            <Button asChild variant="ghost" size="sm" className="hidden md:inline-flex">
+              <Link href="#assessment">Free assessment</Link>
+            </Button>
+            <Button asChild variant="brand" size="sm" className="hidden sm:inline-flex">
+              <Link href="#join">Refer &amp; earn</Link>
+            </Button>
+            <button
+              type="button"
+              aria-label="Toggle menu"
+              aria-expanded={open}
+              className="inline-flex size-10 items-center justify-center rounded-full text-foreground transition-colors hover:bg-secondary lg:hidden"
+              onClick={() => setOpen((v) => !v)}
             >
-              {item.label}
-            </Link>
-          ))}
-          <div className="mt-3 flex flex-col gap-2">
-            <Button asChild variant="outline" onClick={() => setOpen(false)}>
-              <Link href="#assessment">Book a free assessment</Link>
-            </Button>
-            <Button asChild variant="brand" onClick={() => setOpen(false)}>
-              <Link href="#join">Join the Referral Network</Link>
-            </Button>
+              {open ? <X className="size-5" /> : <Menu className="size-5" />}
+            </button>
+          </div>
+        </nav>
+
+        {/* Mobile drawer — floats as its own card under the pill */}
+        <div
+          className={cn(
+            "overflow-hidden transition-[max-height,opacity,margin] duration-300 lg:hidden",
+            open ? "mt-2 max-h-[80vh] opacity-100" : "mt-0 max-h-0 opacity-0",
+            scrolled ? "" : "mx-4",
+          )}
+        >
+          <div className="flex flex-col gap-1 rounded-3xl border border-border/70 glass p-3 shadow-xl shadow-brand-navy/10">
+            {nav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="rounded-2xl px-4 py-3 text-base font-medium text-foreground/90 transition-colors hover:bg-secondary"
+              >
+                {item.label}
+              </Link>
+            ))}
+            <div className="mt-2 flex flex-col gap-2">
+              <Button asChild variant="outline" onClick={() => setOpen(false)}>
+                <Link href="#assessment">Book a free assessment</Link>
+              </Button>
+              <Button asChild variant="brand" onClick={() => setOpen(false)}>
+                <Link href="#join">Join the Referral Network</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </div>

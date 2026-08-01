@@ -11,10 +11,12 @@ const buttonVariants = cva(
       variant: {
         default:
           "bg-primary text-primary-foreground shadow-sm hover:shadow-md hover:brightness-110 active:scale-[0.98]",
+        // The `before` hairline is a lit top edge — reads as a raised surface
+        // rather than a flat colour fill.
         brand:
-          "bg-brand-gradient text-white shadow-[0_8px_30px_-8px_var(--brand-blue)] hover:shadow-[0_12px_40px_-10px_var(--brand-blue)] active:scale-[0.98]",
+          "relative overflow-hidden bg-brand-gradient text-white shadow-[0_8px_30px_-8px_var(--brand-blue)] before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-white/45 hover:shadow-[0_14px_44px_-10px_var(--brand-blue)] hover:brightness-105 active:scale-[0.98]",
         outline:
-          "border border-border bg-transparent hover:bg-secondary hover:text-secondary-foreground",
+          "border border-border bg-transparent hover:border-brand-teal/45 hover:bg-secondary hover:text-secondary-foreground",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-secondary hover:text-secondary-foreground",

@@ -24,7 +24,7 @@ export function Spaces() {
             const Icon = icons[i % icons.length];
             return (
               <StaggerItem key={space.title}>
-                <div className="group flex h-full items-start gap-4 rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                <div className="group flex h-full items-start gap-4 rounded-2xl border border-border bg-card p-6 lift">
                   <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-accent text-accent-foreground transition-colors group-hover:bg-brand-gradient group-hover:text-white">
                     <Icon className="size-5" />
                   </div>

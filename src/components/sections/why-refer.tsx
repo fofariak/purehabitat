@@ -22,7 +22,7 @@ export function WhyRefer() {
             const Icon = icons[i % icons.length];
             return (
               <StaggerItem key={point.title}>
-                <Card className="group h-full p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                <Card className="group h-full p-7 lift">
                   <div className="flex size-12 items-center justify-center rounded-2xl bg-accent text-accent-foreground transition-colors group-hover:bg-brand-gradient group-hover:text-white">
                     <Icon className="size-5" />
                   </div>

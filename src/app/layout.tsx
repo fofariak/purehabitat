@@ -24,7 +24,7 @@ const sora = Sora({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Clean Air for Homes, Gyms, Schools & Clinics | ${site.partnerOf}`,
+    default: `${site.name} — Clean Air for Homes, Gyms, Schools & Clinics | ${site.brand}`,
     template: `%s | ${site.name}`,
   },
   description: site.description,

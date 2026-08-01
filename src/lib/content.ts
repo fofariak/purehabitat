@@ -5,21 +5,25 @@
  * official YOGa Clean Air brochure and the "Y-CAB vs ERV" comparison
  * document. No claims are invented here — keep it that way.
  *
- * Terminology note: PureHabitat is the *channel partner* of YOGa Clean Air.
- * The professionals we recruit are therefore NOT called partners — they join
- * the **Referral Network** and are referred to as *referrers* / *members*.
- * The word "partner" is reserved for the PureHabitat ↔ YOGa relationship only.
+ * Terminology note: the word "partner" appears NOWHERE on this site. We only
+ * build a **Referral Network** — professionals are *referrers* / *members*.
+ * Our own relationship with YOGa is described as "authorized dealer", never
+ * "channel partner", so nobody can read a partnership offer into the page.
+ * If you are tempted to write "partner", write "referrer" or "dealer" instead.
  */
 
 export const site = {
   name: "PureHabitat",
   tagline: "Purity for the places that matter most.",
-  partnerOf: "YOGa Clean Air",
-  /** Name of the professional programme — used everywhere instead of "partner programme". */
+  /** The product we are the authorized dealer for. */
+  brand: "YOGa Clean Air",
+  /** How we describe our own relationship to that brand. */
+  authorization: "Authorized dealer",
+  /** Name of the professional programme. */
   network: "Referral Network",
   coverage: "Serving across India",
   description:
-    "PureHabitat is an authorized channel partner for YOGa Clean Air. Interior designers, architects, luxury builders, home-automation and HVAC firms refer their clients and earn; homeowners, gyms, schools and clinics get a free on-site air-quality assessment. Installed and serviced across India.",
+    "PureHabitat is the authorized dealer for YOGa Clean Air. Interior designers, architects, luxury builders, home-automation and HVAC firms refer their clients and earn; homeowners, gyms, schools and clinics get a free on-site air-quality assessment. Installed and serviced across India.",
   url: "https://mypurehabitat.com",
   email: "hello@mypurehabitat.com",
   contacts: [
