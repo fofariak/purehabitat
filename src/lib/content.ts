@@ -56,6 +56,27 @@ export const heroStats = [
   { value: "Pan-India", label: "Install & service", sub: "Metros and beyond" },
 ] as const;
 
+/** Hero headline, split so the second half can carry the brand gradient. */
+export const hero = {
+  headline: "The cleanest air",
+  headlineAccent: "your space has ever breathed.",
+  lead: "Designers, architects, builders, home-automation and HVAC firms refer their clients and earn on every install. Homeowners, gyms, schools and clinics get a free on-site air-quality assessment. Assessed, installed and serviced by PureHabitat across India.",
+} as const;
+
+/**
+ * Real measured figures from the IIT Delhi study (Golf Links Residence) used
+ * for the animated before/after readout in the hero. These are actual verified
+ * numbers from the brochure — do NOT swap them for illustrative ones, and do
+ * not present the readout as live data.
+ */
+export const aqiDemo = {
+  source: "Verified · IIT Delhi study",
+  place: "Golf Links Residence, Delhi",
+  outside: { value: 561, label: "Outside", unit: "µg/m³" },
+  inside: { value: 2.82, label: "Inside", unit: "µg/m³" },
+  reduction: "99.5%",
+} as const;
+
 /**
  * The two ways to work with PureHabitat. This is the primary fork in the page:
  * professionals earn on referrals, end clients get a free assessment instead.
@@ -101,7 +122,7 @@ export const tracks = {
 export const concept = {
   eyebrow: "The system",
   title: "Fresh air in, pollution out — ventilation and purification in one.",
-  lead: "Think of the Y-CAB as a 'fresh air window'. It draws outdoor air through a duct in the wall, filters it through hospital-grade media, then pumps clean air in at slight positive pressure — creating a bubble that pushes polluted air out so it can't get back in.",
+  lead: "Think of the Y-CAB as a 'fresh air window'. It draws outdoor air through a duct in the wall, filters it through medical-grade media, then pumps clean air in at slight positive pressure — creating a bubble that pushes polluted air out so it can't get back in.",
   pillars: [
     {
       title: "Fresh air",
@@ -196,7 +217,7 @@ export const spaces = [
   { title: "Luxury Homes", body: "Whole-home clean air across 1,500 sq.ft per unit." },
   { title: "Schools", body: "Protect developing lungs across classrooms and floors." },
   { title: "Corporate Offices", body: "Lower CO₂ and PM2.5 for sharper, healthier teams." },
-  { title: "Clinics & Hospitals", body: "Hospital-grade air where health matters most." },
+  { title: "Clinics & Hospitals", body: "The cleanest air possible, where health matters most." },
   { title: "Gyms & Studios", body: "Clean, oxygen-rich air for people breathing hard." },
   { title: "Hospitality", body: "A memorable wellness signature guests can feel." },
 ] as const;
@@ -216,7 +237,7 @@ export const whyRefer = {
     },
     {
       title: "Differentiate every project",
-      body: "Hospital-grade clean air is a rare, memorable amenity that sets your work apart, gets talked about, and preserves the architecture with a ductless system.",
+      body: "Air this clean is a rare, memorable amenity that sets your work apart, gets talked about, and preserves the architecture with a ductless system.",
     },
     {
       title: "Zero operational burden",
@@ -479,7 +500,7 @@ export const resources = [
 export const faqs = [
   {
     q: "What exactly is the Clean Air Bubble?",
-    a: "Think of it as a 'fresh air window'. The Y-CAB unit draws outdoor air through a duct in the wall, filters it through hospital-grade media, then pumps clean air in at slight positive pressure. This bubble pushes polluted air out — so pollution cannot enter.",
+    a: "Think of it as a 'fresh air window'. The Y-CAB unit draws outdoor air through a duct in the wall, filters it through medical-grade media, then pumps clean air in at slight positive pressure. This bubble pushes polluted air out — so pollution cannot enter.",
   },
   {
     q: "How is this different from a room air purifier?",
@@ -511,7 +532,7 @@ export const faqs = [
   },
   {
     q: "What does it cost to run?",
-    a: "Approximately ₹400–500 per month running 24/7 — less than the cost of one coffee a day for hospital-grade clean air in every room.",
+    a: "Approximately ₹400–500 per month running 24/7 — less than the cost of one coffee a day for the cleanest air possible in every room.",
   },
   {
     q: "Is there any cost to join the Referral Network?",

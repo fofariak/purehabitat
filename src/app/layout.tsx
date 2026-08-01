@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   authors: [{ name: site.name }],
   openGraph: {
     type: "website",
-    title: `${site.name} — Hospital-grade clean air for the spaces that matter`,
+    title: `${site.name} — The cleanest air your space has ever breathed`,
     description: site.description,
     siteName: site.name,
     url: site.url,
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — Hospital-grade clean air, across India`,
+    title: `${site.name} — The cleanest air possible, across India`,
     description: site.description,
   },
   robots: { index: true, follow: true },

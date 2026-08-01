@@ -1,10 +1,10 @@
-import type { CSSProperties } from "react";
 import Link from "next/link";
-import { ArrowRight, Filter, MapPin, ShieldCheck, Sparkles, Wind } from "lucide-react";
+import { ArrowRight, MapPin, ShieldCheck, Sparkles } from "lucide-react";
 
-import { heroStats, site } from "@/lib/content";
+import { hero, heroStats, site } from "@/lib/content";
 import { Button } from "@/components/ui/button";
-import { LogoMark } from "@/components/logo";
+import { PurificationField } from "@/components/purification-field";
+import { AirQualityPanel } from "@/components/air-quality-panel";
 
 export function Hero() {
   return (
@@ -16,6 +16,8 @@ export function Hero() {
         <div className="absolute -left-[10%] top-[-15%] hidden h-[520px] w-[520px] rounded-full bg-brand-blue/25 blur-[90px] sm:block" />
         <div className="absolute -right-[8%] top-[-5%] hidden h-[480px] w-[480px] rounded-full bg-brand-teal/25 blur-[90px] sm:block" />
         <div className="absolute bottom-[-20%] left-1/2 hidden h-[400px] w-[680px] -translate-x-1/2 rounded-full bg-brand-sky/20 blur-[90px] lg:block" />
+        {/* Pollution particles being swept clean by the expanding bubble */}
+        <PurificationField className="absolute inset-0 size-full" />
       </div>
 
       <div className="container-px mx-auto max-w-6xl">
@@ -36,18 +38,15 @@ export function Hero() {
               className="ph-in mt-6 font-display text-[2.15rem] font-semibold leading-[1.05] tracking-[-0.035em] text-balance sm:text-[3.25rem] md:text-[4rem]"
               style={{ animationDelay: "0.06s" }}
             >
-              Hospital-grade clean air for{" "}
-              <span className="text-gradient">the spaces that matter.</span>
+              {hero.headline}{" "}
+              <span className="text-gradient">{hero.headlineAccent}</span>
             </h1>
 
             <p
               className="ph-in mt-5 max-w-xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg"
               style={{ animationDelay: "0.14s" }}
             >
-              Designers, architects, builders, home-automation and HVAC firms
-              refer their clients and earn on every install. Homeowners, gyms,
-              schools and clinics get a free on-site air-quality assessment.
-              Assessed, installed and serviced by PureHabitat across India.
+              {hero.lead}
             </p>
 
             <div
@@ -73,7 +72,7 @@ export function Hero() {
             </p>
           </div>
 
-          <HeroVisual />
+          <AirQualityPanel />
         </div>
 
         {/* Stats */}
@@ -96,72 +95,5 @@ export function Hero() {
         </dl>
       </div>
     </section>
-  );
-}
-
-function HeroVisual() {
-  return (
-    <div className="ph-in relative mx-auto w-full max-w-sm sm:max-w-md" style={{ animationDelay: "0.2s" }}>
-      {/* Branded "clean air bubble" panel */}
-      <div className="relative aspect-square overflow-hidden rounded-[2rem] border border-brand-navy/20 bg-brand-navy shadow-xl">
-        <div
-          aria-hidden
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(50% 60% at 25% 20%, color-mix(in srgb, var(--brand-blue) 55%, transparent), transparent 70%), radial-gradient(55% 60% at 80% 85%, color-mix(in srgb, var(--brand-teal) 45%, transparent), transparent 70%)",
-          }}
-        />
-
-        {/* Concentric bubble rings (CSS-only) */}
-        <div aria-hidden className="absolute inset-0 flex items-center justify-center">
-          {[0, 1, 2, 3].map((i) => (
-            <div
-              key={i}
-              className="ph-ring absolute rounded-full border border-white/15"
-              style={
-                {
-                  inset: `${8 + i * 11}%`,
-                  "--ph-ring-dur": `${5 + i}s`,
-                  animationDelay: `${i * 0.35}s`,
-                } as CSSProperties
-              }
-            />
-          ))}
-        </div>
-
-        {/* Logo mark */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="ph-float flex size-28 items-center justify-center rounded-[1.75rem] border border-white/15 bg-white/5 sm:size-32">
-            <LogoMark className="size-16 text-white sm:size-20" />
-          </div>
-        </div>
-
-        {/* Caption */}
-        <div className="absolute inset-x-5 bottom-5 text-center">
-          <p className="font-display text-sm font-semibold text-white">
-            The Clean Air Bubble
-          </p>
-          <p className="text-xs text-white/60">Fresh air in · pollution out</p>
-        </div>
-      </div>
-
-      {/* Floating pills — ventilation + purification (desktop only) */}
-      <div className="ph-float absolute -left-3 top-10 hidden sm:block">
-        <div className="glass ring-hairline flex items-center gap-2 rounded-full px-3.5 py-2 shadow-lg">
-          <Wind className="size-4 text-brand-blue" />
-          <span className="text-sm font-medium">Ventilation</span>
-        </div>
-      </div>
-      <div
-        className="ph-float absolute -right-3 bottom-16 hidden sm:block"
-        style={{ animationDelay: "0.6s" }}
-      >
-        <div className="glass ring-hairline flex items-center gap-2 rounded-full px-3.5 py-2 shadow-lg">
-          <Filter className="size-4 text-brand-teal" />
-          <span className="text-sm font-medium">Purification</span>
-        </div>
-      </div>
-    </div>
   );
 }

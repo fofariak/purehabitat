@@ -7,7 +7,7 @@ import { site } from "@/lib/content";
  * WhatsApp, LinkedIn or email, which is how most outreach actually reaches
  * people. Generated at build time, so there is no static asset to maintain.
  */
-export const alt = `${site.name} — hospital-grade clean air, installed and serviced across India`;
+export const alt = `${site.name} — the cleanest air possible, installed and serviced across India`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -83,7 +83,7 @@ export default function Image() {
               maxWidth: 900,
             }}
           >
-            Hospital-grade clean air for the spaces that matter.
+            The cleanest air your space has ever breathed.
           </div>
           <div
             style={{
