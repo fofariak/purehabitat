@@ -78,6 +78,23 @@ export const aqiDemo = {
 } as const;
 
 /**
+ * Hero house-cutaway animation: the Y-CAB switches on and the rooms clear.
+ *
+ * The counters are an ILLUSTRATION, not measured data — the panel says so, and
+ * carries the real verified figures underneath it. Do not relabel it as live
+ * or measured, and do not claim a specific clearing time: `runSeconds` is
+ * animation pacing, not a performance promise.
+ */
+export const airSim = {
+  label: "Clean Air Bubble",
+  badge: "Simulation",
+  pm25: { from: 432, to: 3, label: "PM 2.5", unit: "µg/m³" },
+  co2: { from: 2342, to: 480, label: "CO₂", unit: "ppm" },
+  footnote:
+    "Illustrative. Verified in a real home: 2.82 µg/m³ indoors vs 561 outside — IIT Delhi study.",
+} as const;
+
+/**
  * The two ways to work with PureHabitat. This is the primary fork in the page:
  * professionals earn on referrals, end clients get a free assessment instead.
  */

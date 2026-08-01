@@ -4,7 +4,7 @@ import { ArrowRight, MapPin, ShieldCheck, Sparkles } from "lucide-react";
 import { hero, heroStats, site } from "@/lib/content";
 import { Button } from "@/components/ui/button";
 import { PurificationField } from "@/components/purification-field";
-import { AirQualityPanel } from "@/components/air-quality-panel";
+import { HouseSimulation } from "@/components/house-simulation";
 
 export function Hero() {
   return (
@@ -72,7 +72,7 @@ export function Hero() {
             </p>
           </div>
 
-          <AirQualityPanel />
+          <HouseSimulation />
         </div>
 
         {/* Stats */}
