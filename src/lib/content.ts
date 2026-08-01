@@ -1,19 +1,27 @@
 /**
- * Central content source for the PureHabitat partner site.
+ * Central content source for the PureHabitat site.
  *
  * All product claims are taken verbatim (or lightly condensed) from the
  * official YOGa Clean Air brochure and the "Y-CAB vs ERV" comparison
  * document. No claims are invented here — keep it that way.
+ *
+ * Terminology note: PureHabitat is the *channel partner* of YOGa Clean Air.
+ * The professionals we recruit are therefore NOT called partners — they join
+ * the **Referral Network** and are referred to as *referrers* / *members*.
+ * The word "partner" is reserved for the PureHabitat ↔ YOGa relationship only.
  */
 
 export const site = {
   name: "PureHabitat",
   tagline: "Purity for the places that matter most.",
   partnerOf: "YOGa Clean Air",
+  /** Name of the professional programme — used everywhere instead of "partner programme". */
+  network: "Referral Network",
+  coverage: "Serving across India",
   description:
-    "PureHabitat is an authorized channel partner for YOGa Clean Air. We partner with interior designers, architects, luxury builders and home-automation companies to bring hospital-grade clean air to the homes they create.",
+    "PureHabitat is an authorized channel partner for YOGa Clean Air. Interior designers, architects, luxury builders, home-automation and HVAC firms refer their clients and earn; homeowners, gyms, schools and clinics get a free on-site air-quality assessment. Installed and serviced across India.",
   url: "https://mypurehabitat.com",
-  email: "partners@mypurehabitat.com",
+  email: "hello@mypurehabitat.com",
   contacts: [
     { name: "Miren", phone: "+91 98798 69406", tel: "+919879869406", whatsapp: "919879869406" },
     { name: "Karan", phone: "+91 96574 41692", tel: "+919657441692", whatsapp: "919657441692" },
@@ -29,12 +37,58 @@ export function whatsappLink(number: string, message: string = site.whatsappMess
 
 export const nav = [
   { label: "The System", href: "#concept" },
-  { label: "Who It's For", href: "#who" },
-  { label: "Spaces", href: "#spaces" },
+  { label: "Work With Us", href: "#work-with-us" },
+  { label: "Projects", href: "#projects" },
   { label: "Why YOGa", href: "#why-yoga" },
-  { label: "How It Works", href: "#how-it-works" },
+  { label: "Where It Works", href: "#spaces" },
   { label: "FAQ", href: "#faq" },
 ] as const;
+
+/** Headline proof points shown under the hero. */
+export const heroStats = [
+  { value: "< 5 µg/m³", label: "Indoor PM2.5", sub: "Single-digit guaranteed" },
+  { value: "10+", label: "Spaces delivered", sub: "Homes, schools & clinics" },
+  { value: "1,500 sq.ft", label: "Coverage per unit", sub: "Whole-space clean air" },
+  { value: "Pan-India", label: "Install & service", sub: "Metros and beyond" },
+] as const;
+
+/**
+ * The two ways to work with PureHabitat. This is the primary fork in the page:
+ * professionals earn on referrals, end clients get a free assessment instead.
+ */
+export const tracks = {
+  eyebrow: "Work with us",
+  title: "Two ways to bring clean air into a space.",
+  lead: "Recommend YOGa to the clients you already serve — or get it installed in your own home, gym, school or clinic. Pick the path that fits you.",
+  refer: {
+    key: "refer",
+    kicker: "For professionals",
+    title: "Refer your clients, earn on every install",
+    body: "Interior designers, architects, luxury builders, home-automation and HVAC firms join the PureHabitat Referral Network. You make the introduction — we handle the assessment, installation and lifetime service, and you earn a reward on every completed project.",
+    points: [
+      "Free to join — no cost, no targets, no exclusivity",
+      "Referral reward on every completed installation",
+      "Free on-site air-quality assessment for your client",
+      "Your name stays on the client relationship",
+    ],
+    cta: "Join the Referral Network",
+    href: "#join",
+  },
+  own: {
+    key: "own",
+    kicker: "For your own space",
+    title: "Get clean air in the space you own",
+    body: "Homeowners, gym and studio owners, school and hospital managements — you don't need to refer anyone. Book a free on-site Indoor Air Quality assessment and we'll show you exactly what you're breathing, then quote a system sized for your space.",
+    points: [
+      "Free on-site IAQ assessment — no obligation",
+      "Live before/after PM2.5 demo in your own space",
+      "Sized, quoted and installed for your floor plan",
+      "White-glove service with a 20+ year parts guarantee",
+    ],
+    cta: "Book a free assessment",
+    href: "#assessment",
+  },
+} as const;
 
 /**
  * What the product actually is — ventilation + purification, in plain terms.
@@ -85,12 +139,50 @@ export const concept = {
   ],
 } as const;
 
+/**
+ * Completed-projects showcase.
+ *
+ * Video source resolution (first match wins) — see README "Adding the site video":
+ *   1. NEXT_PUBLIC_SHOWCASE_YOUTUBE_ID  → click-to-load YouTube embed
+ *   2. /video/showcase.mp4              → self-hosted file in public/video/
+ */
+export const projects = {
+  eyebrow: "Completed projects",
+  title: "10+ spaces already breathing clean air.",
+  lead: "Homes, schools and clinics with the Clean Air Bubble installed and running — designed, installed and serviced by PureHabitat across India.",
+  videoSrc: "/video/showcase.mp4",
+  videoPoster: "/img/showcase-poster.jpg",
+  videoLabel: "Walkthrough of a completed PureHabitat installation",
+  stats: [
+    { value: "10+", label: "Spaces delivered" },
+    { value: "Pan-India", label: "Install & service" },
+    { value: "24/7", label: "Running, monitored" },
+    { value: "20+ yrs", label: "Parts guarantee" },
+  ],
+  /** Service coverage — where we install and service, not a list of completed sites. */
+  cities: [
+    "Mumbai",
+    "Delhi NCR",
+    "Bengaluru",
+    "Hyderabad",
+    "Ahmedabad",
+    "Pune",
+    "Chennai",
+    "Kolkata",
+    "Surat",
+    "Jaipur",
+    "Chandigarh",
+    "Goa",
+    "Lucknow",
+    "Indore",
+  ],
+} as const;
+
 /** Editorial "brand moment" band — pairs the moodboard with the brand promise. */
 export const brandMoment = {
   eyebrow: "The promise",
   title: "Cleaner air. Healthier habitat.",
-  lead: "PureHabitat exists for one reason: to make the air inside the places you design, build and live in as pure as it can be. Not a gadget in the corner — a whole-space upgrade your clients feel the moment they walk in.",
-  pillars: ["Cleaner air", "Healthy habitat", "Pure living", "Breathe better"],
+  lead: "PureHabitat exists for one reason: to make the air inside the places you design, build and live in as pure as it can be. Not a gadget in the corner — a whole-space upgrade you feel the moment you walk in.",
   image: "/img/moodboard.jpg",
   alt: "PureHabitat moodboard — cleaner air, healthy habitat, pure living, breathe better",
 } as const;
@@ -105,18 +197,10 @@ export const spaces = [
   { title: "Hospitality", body: "A memorable wellness signature guests can feel." },
 ] as const;
 
-/** Headline stats — all verified in the brochure. */
-export const heroStats = [
-  { value: "< 5 µg/m³", label: "Indoor PM2.5", sub: "Single-digit guaranteed" },
-  { value: "1,500 sq.ft", label: "Coverage per unit", sub: "Whole-space clean air" },
-  { value: "500 CFM", label: "Fresh airflow", sub: "Filtered outdoor air" },
-  { value: "99.99%", label: "Uptime", sub: "24/7 service SLA" },
-] as const;
-
-export const whyPartner = {
-  eyebrow: "Why partner with PureHabitat",
+export const whyRefer = {
+  eyebrow: "Why refer",
   title: "The professionals who shape luxury spaces make the biggest impact.",
-  lead: "You already serve affluent clients who care about wellness. Recommending YOGa Clean Air adds a signature upgrade to your projects — and one introduction can become qualified buyers for years.",
+  lead: "You already serve clients who care about wellness. Recommending YOGa Clean Air adds a signature upgrade to your projects — and one introduction can become qualified buyers for years.",
   points: [
     {
       title: "Serve clients who already value wellness",
@@ -132,12 +216,12 @@ export const whyPartner = {
     },
     {
       title: "Zero operational burden",
-      body: "You make the introduction; PureHabitat handles the IAQ consultation, installation and lifetime white-glove service. Your name stays on the relationship.",
+      body: "You make the introduction; PureHabitat handles the IAQ assessment, installation and lifetime white-glove service. Your name stays on the relationship.",
     },
   ],
 } as const;
 
-/** High-value professional categories we build relationships with. */
+/** High-value professional categories we build the Referral Network from. */
 export const targetProfessionals = [
   {
     tag: "Design",
@@ -167,6 +251,19 @@ export const targetProfessionals = [
     image: "/img/automation.jpg",
     alt: "Smart-home devices controlled from a phone — lights and camera",
   },
+] as const;
+
+/**
+ * Trades without a dedicated photo card — shown as a compact strip so HVAC,
+ * MEP and PMC firms can see themselves on the page too.
+ */
+export const alsoForProfessionals = [
+  "HVAC Companies",
+  "MEP Consultants",
+  "PMC & Project Managers",
+  "Turnkey Contractors",
+  "Real Estate Consultants",
+  "Facility Management Firms",
 ] as const;
 
 /** Core YOGa advantages — from the brochure "ADVANTAGE" section. */
@@ -264,46 +361,83 @@ export const techSpecs = [
   { label: "Running cost", value: "≈ ₹400–500 / month, 24/7" },
 ] as const;
 
-export const howItWorks = [
-  {
-    step: "01",
-    title: "Become a partner",
-    body: "Register in minutes. We onboard you, share the toolkit and brief you on the product so you can recommend with confidence.",
-  },
-  {
-    step: "02",
-    title: "Introduce a client",
-    body: "Refer a client or project. Send us the space details and we take it from there — your name stays on the relationship.",
-  },
-  {
-    step: "03",
-    title: "We handle consultation",
-    body: "Our team runs a free on-site Indoor Air Quality (IAQ) assessment and recommends the right YOGa solution for the space.",
-  },
-  {
-    step: "04",
-    title: "Installation",
-    body: "A ductless or minimal-duct Y-CAB is installed cleanly, preserving the architecture and finishes of the project.",
-  },
-  {
-    step: "05",
-    title: "Earn & repeat",
-    body: "Receive your referral reward, and we keep the system running with white-glove service. Then introduce the next project — one relationship, many opportunities.",
-  },
-] as const;
+/**
+ * How it works — the flow differs by audience, so each track gets its own
+ * numbered path rather than one flow that only makes sense for professionals.
+ */
+export const howItWorks = {
+  eyebrow: "How it works",
+  title: "A short, transparent path — whichever side you're on.",
+  lead: "Same team, same white-glove service. Only the first step changes.",
+  refer: [
+    {
+      step: "01",
+      title: "Join the network",
+      body: "Register in minutes. We onboard you, share the toolkit and brief you on the product so you can recommend with confidence.",
+    },
+    {
+      step: "02",
+      title: "Introduce a client",
+      body: "Send us the client or project details. Your name stays on the relationship throughout.",
+    },
+    {
+      step: "03",
+      title: "We assess the space",
+      body: "Our team runs a free on-site Indoor Air Quality assessment and recommends the right YOGa system.",
+    },
+    {
+      step: "04",
+      title: "We install",
+      body: "A ductless or minimal-duct Y-CAB is installed cleanly, preserving the architecture and finishes.",
+    },
+    {
+      step: "05",
+      title: "You earn, we service",
+      body: "You receive your referral reward; we keep the system running with white-glove service. Then introduce the next project.",
+    },
+  ],
+  own: [
+    {
+      step: "01",
+      title: "Tell us about your space",
+      body: "Share the type of space, city and rough area. Takes under a minute — no cost, no commitment.",
+    },
+    {
+      step: "02",
+      title: "Free on-site assessment",
+      body: "We visit, measure your actual indoor PM2.5 and CO₂, and show you what you and your family are breathing.",
+    },
+    {
+      step: "03",
+      title: "See the difference live",
+      body: "A live before/after demo in your own space — watch the numbers drop, no sales deck required.",
+    },
+    {
+      step: "04",
+      title: "Sized quote & install",
+      body: "A system sized for your floor plan, installed cleanly around your interiors and finishes.",
+    },
+    {
+      step: "05",
+      title: "We keep it running",
+      body: "White-glove maintenance, filter service and a 20+ year parts guarantee. You just breathe.",
+    },
+  ],
+} as const;
 
-export const partnerBenefits = [
+/** What Referral Network members get. */
+export const networkBenefits = [
   {
-    title: "Dedicated partner support",
-    body: "A single point of contact for every referral, quote and installation — no chasing distributors.",
+    title: "A named point of contact",
+    body: "One person handling every referral, quote and installation — no chasing distributors.",
   },
   {
     title: "Technical guidance",
     body: "Load calculations, placement and specification support for your drawings and BOQs.",
   },
   {
-    title: "Marketing resources",
-    body: "Co-branded brochures, renders, comparison sheets and social assets ready to share with clients.",
+    title: "Client-ready collateral",
+    body: "Co-branded brochures, renders, comparison sheets and social assets ready to share.",
   },
   {
     title: "Training & enablement",
@@ -329,8 +463,8 @@ export const resources = [
     download: false,
   },
   {
-    title: "Partner FAQ",
-    description: "Everything architects, designers and consultants ask before recommending YOGa to clients.",
+    title: "Questions, answered",
+    description: "Everything architects, designers, consultants and homeowners ask before choosing YOGa.",
     cta: "Browse FAQ",
     kind: "FAQ",
     href: "#faq",
@@ -356,6 +490,18 @@ export const faqs = [
     a: "Yes. Independent IIT Delhi studies verified results in real Indian spaces — for example the Golf Links residence measured 2.82 µg/m³ indoors versus 561 µg/m³ outside, a 99.5% reduction.",
   },
   {
+    q: "Do you install outside the metros?",
+    a: "Yes. PureHabitat installs and services across India. Share your city when you enquire and we'll confirm the site-visit schedule for your location.",
+  },
+  {
+    q: "I'm a homeowner / gym owner / school — can I just buy one?",
+    a: "Absolutely. You don't need to be part of the Referral Network. Choose 'For my own space' on the enquiry form and we'll arrange a free on-site Indoor Air Quality assessment, show you a live before/after demo, and quote a system sized for your floor plan.",
+  },
+  {
+    q: "What does the free assessment involve?",
+    a: "A technician visits your space, measures actual indoor PM2.5 and CO₂ against outdoor levels, and walks you through the readings. There is no cost and no obligation to buy.",
+  },
+  {
     q: "Will it disrupt the architecture or ceiling heights?",
     a: "No. Y-CAB is a ductless or minimal-duct system with a compact footprint, unlike ERVs that require extensive dual ductwork and lower false ceilings.",
   },
@@ -364,23 +510,34 @@ export const faqs = [
     a: "Approximately ₹400–500 per month running 24/7 — less than the cost of one coffee a day for hospital-grade clean air in every room.",
   },
   {
-    q: "Is there any cost to become a partner?",
-    a: "No. Joining the PureHabitat partner network is free. You introduce clients and projects; we handle everything else — and reward you for every successful referral.",
+    q: "Is there any cost to join the Referral Network?",
+    a: "No. Joining is free, with no targets and no exclusivity. You introduce clients and projects; we handle everything else — and reward you for every completed installation.",
   },
   {
-    q: "What support do partners get after referring a client?",
-    a: "PureHabitat handles the free IAQ consultation, installation and lifetime white-glove maintenance with a 24/7 service SLA and 20+ year parts guarantee. You stay focused on your client relationship.",
-  },
-  {
-    q: "Who is the ideal client for YOGa?",
-    a: "Premium homes, schools, corporate offices, clinics, hospitals and gyms — and anyone with asthma, allergies, respiratory conditions or a focus on longevity and wellness.",
+    q: "What support do members get after referring a client?",
+    a: "PureHabitat handles the free IAQ assessment, installation and lifetime white-glove maintenance with a 24/7 service SLA and 20+ year parts guarantee. You stay focused on your client relationship.",
   },
 ] as const;
 
-export const businessTypes = [
+/** Professional categories — the "I refer clients" branch of the enquiry form. */
+export const professions = [
   "Interior Designer",
   "Architect",
   "Luxury Builder / Developer",
   "Home Automation Company",
+  "HVAC Company",
+  "MEP / PMC Consultant",
+  "Real Estate Consultant",
+  "Other",
+] as const;
+
+/** Space categories — the "for my own space" branch of the enquiry form. */
+export const spaceTypes = [
+  "Home / Villa / Apartment",
+  "Gym / Fitness Studio",
+  "School / Preschool",
+  "Hospital / Clinic",
+  "Corporate Office",
+  "Hotel / Hospitality",
   "Other",
 ] as const;

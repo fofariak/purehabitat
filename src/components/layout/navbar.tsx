@@ -56,11 +56,11 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex">
-            <Link href="#book-demo">Book a demo</Link>
+          <Button asChild variant="ghost" size="sm" className="hidden md:inline-flex">
+            <Link href="#assessment">Free assessment</Link>
           </Button>
           <Button asChild variant="brand" size="sm" className="hidden sm:inline-flex">
-            <Link href="#become-partner">Become a partner</Link>
+            <Link href="#join">Refer &amp; earn</Link>
           </Button>
           <button
             type="button"
@@ -93,10 +93,10 @@ export function Navbar() {
           ))}
           <div className="mt-3 flex flex-col gap-2">
             <Button asChild variant="outline" onClick={() => setOpen(false)}>
-              <Link href="#book-demo">Book a demo</Link>
+              <Link href="#assessment">Book a free assessment</Link>
             </Button>
             <Button asChild variant="brand" onClick={() => setOpen(false)}>
-              <Link href="#become-partner">Become a partner</Link>
+              <Link href="#join">Join the Referral Network</Link>
             </Button>
           </div>
         </div>

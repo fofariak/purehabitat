@@ -19,7 +19,7 @@ export function BookDemo() {
         <SectionHeading
           eyebrow="Book a demo"
           title="See the Clean Air Bubble in action."
-          description="Schedule a walkthrough with our team — or arrange a free on-site Indoor Air Quality (IAQ) consultation for one of your projects."
+          description="Schedule a walkthrough with our team — or arrange a free on-site Indoor Air Quality assessment for your own space or a client project, anywhere in India."
         />
 
         <Reveal className="mt-14">
@@ -61,8 +61,8 @@ function BookingFallback() {
           Let&apos;s find a time that works.
         </h3>
         <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
-          We&apos;ll walk you through the product, the partner program and answer
-          any technical questions — for you or a specific client project. The
+          We&apos;ll walk you through the product, the Referral Network and answer
+          any technical questions — for your own space or a client project. The
           fastest way to reach us is WhatsApp.
         </p>
 

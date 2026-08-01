@@ -1,30 +1,50 @@
 "use server";
 
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { partnerApplicationSchema } from "@/lib/validations";
+import { enquirySchema } from "@/lib/validations";
 
-export type PartnerActionState = {
+export type EnquiryActionState = {
   status: "idle" | "success" | "error";
   message: string;
   fieldErrors?: Record<string, string>;
 };
 
-export async function submitPartnerApplication(
-  _prev: PartnerActionState,
+const SUCCESS_COPY = {
+  refer: "You're in. Our team will reach out within two business days with your onboarding kit and referral details.",
+  own: "Thanks! We'll call you within two business days to schedule your free on-site air-quality assessment.",
+} as const;
+
+export async function submitEnquiry(
+  _prev: EnquiryActionState,
   formData: FormData,
-): Promise<PartnerActionState> {
+): Promise<EnquiryActionState> {
+  // Honeypot — real users never see or fill this field.
+  if (String(formData.get("company_website") ?? "").trim() !== "") {
+    return { status: "success", message: SUCCESS_COPY.refer };
+  }
+
+  const enquiryType = formData.get("enquiryType") === "own" ? "own" : "refer";
+
   const raw = {
+    enquiryType,
     name: String(formData.get("name") ?? ""),
-    company: String(formData.get("company") ?? ""),
     email: String(formData.get("email") ?? ""),
     phone: String(formData.get("phone") ?? ""),
-    businessType: String(formData.get("businessType") ?? ""),
     city: String(formData.get("city") ?? ""),
-    website: String(formData.get("website") ?? ""),
     message: String(formData.get("message") ?? ""),
+    ...(enquiryType === "refer"
+      ? {
+          company: String(formData.get("company") ?? ""),
+          profession: String(formData.get("profession") ?? ""),
+          website: String(formData.get("website") ?? ""),
+        }
+      : {
+          spaceType: String(formData.get("spaceType") ?? ""),
+          areaSqft: String(formData.get("areaSqft") ?? ""),
+        }),
   };
 
-  const parsed = partnerApplicationSchema.safeParse(raw);
+  const parsed = enquirySchema.safeParse(raw);
 
   if (!parsed.success) {
     const fieldErrors: Record<string, string> = {};
@@ -41,42 +61,42 @@ export async function submitPartnerApplication(
     };
   }
 
+  const data = parsed.data;
   const supabase = await createSupabaseServerClient();
 
   // Graceful fallback: without configured credentials we still confirm receipt
-  // so the UX works in preview/dev. Wire up Supabase env vars for persistence.
+  // so the UX works in preview/dev. Wire up Supabase env vars for persistence —
+  // until then these leads exist only in the server log.
   if (!supabase) {
-    console.info("[partner-application] (no Supabase configured)", parsed.data);
-    return {
-      status: "success",
-      message:
-        "Thanks! Your application has been received. Our partnerships team will be in touch shortly.",
-    };
+    console.warn(
+      "[enquiry] Supabase is NOT configured — this lead was not stored:",
+      data,
+    );
+    return { status: "success", message: SUCCESS_COPY[data.enquiryType] };
   }
 
-  const { error } = await supabase.from("partner_applications").insert({
-    name: parsed.data.name,
-    company: parsed.data.company,
-    email: parsed.data.email,
-    phone: parsed.data.phone,
-    business_type: parsed.data.businessType,
-    city: parsed.data.city,
-    website: parsed.data.website || null,
-    message: parsed.data.message || null,
+  const { error } = await supabase.from("enquiries").insert({
+    enquiry_type: data.enquiryType,
+    name: data.name,
+    email: data.email,
+    phone: data.phone,
+    city: data.city,
+    message: data.message || null,
+    company: data.enquiryType === "refer" ? data.company : null,
+    profession: data.enquiryType === "refer" ? data.profession : null,
+    website: data.enquiryType === "refer" ? data.website || null : null,
+    space_type: data.enquiryType === "own" ? data.spaceType : null,
+    area_sqft: data.enquiryType === "own" ? data.areaSqft || null : null,
   });
 
   if (error) {
-    console.error("[partner-application] insert failed", error);
+    console.error("[enquiry] insert failed", error);
     return {
       status: "error",
       message:
-        "Something went wrong saving your application. Please try again or email us directly.",
+        "Something went wrong saving your details. Please try again, or message us on WhatsApp.",
     };
   }
 
-  return {
-    status: "success",
-    message:
-      "Thanks! Your application has been received. Our partnerships team will be in touch shortly.",
-  };
+  return { status: "success", message: SUCCESS_COPY[data.enquiryType] };
 }

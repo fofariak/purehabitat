@@ -1,33 +1,39 @@
 import { Hero } from "@/components/sections/hero";
+import { Tracks } from "@/components/sections/tracks";
 import { Concept } from "@/components/sections/concept";
+import { Projects } from "@/components/sections/projects";
 import { BrandMoment } from "@/components/sections/brand-moment";
-import { WhyPartner } from "@/components/sections/why-partner";
-import { WhoWePartner } from "@/components/sections/who-we-partner";
+import { WhyRefer } from "@/components/sections/why-refer";
+import { WhoWeReferWith } from "@/components/sections/who-refers";
 import { Spaces } from "@/components/sections/spaces";
 import { WhyYoga } from "@/components/sections/why-yoga";
 import { HowItWorks } from "@/components/sections/how-it-works";
-import { PartnerBenefits } from "@/components/sections/partner-benefits";
+import { NetworkBenefits } from "@/components/sections/network-benefits";
 import { Resources } from "@/components/sections/resources";
-import { PartnerForm } from "@/components/sections/partner-form";
+import { EnquiryForm } from "@/components/sections/enquiry-form";
 import { BookDemo } from "@/components/sections/book-demo";
 import { Faq } from "@/components/sections/faq";
 import { Contact } from "@/components/sections/contact";
-import { site } from "@/lib/content";
+import { faqs, site } from "@/lib/content";
 
 export default function Home() {
   return (
     <>
       <Hero />
+      {/* The audience fork sits directly under the hero: professionals refer
+          and earn, everyone else books a free assessment. */}
+      <Tracks />
       <Concept />
+      <Projects />
       <BrandMoment />
-      <WhyPartner />
-      <WhoWePartner />
+      <WhyRefer />
+      <WhoWeReferWith />
       <Spaces />
       <WhyYoga />
       <HowItWorks />
-      <PartnerBenefits />
+      <NetworkBenefits />
       <Resources />
-      <PartnerForm />
+      <EnquiryForm />
       <BookDemo />
       <Faq />
       <Contact />
@@ -37,21 +43,35 @@ export default function Home() {
 }
 
 function StructuredData() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: site.name,
-    description: site.description,
-    url: site.url,
-    slogan: site.tagline,
-    email: site.email,
-    contactPoint: site.contacts.map((c) => ({
-      "@type": "ContactPoint",
-      name: c.name,
-      telephone: c.tel,
-      contactType: "sales",
-    })),
-  };
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: site.name,
+      description: site.description,
+      url: site.url,
+      slogan: site.tagline,
+      email: site.email,
+      areaServed: { "@type": "Country", name: "India" },
+      contactPoint: site.contacts.map((c) => ({
+        "@type": "ContactPoint",
+        name: c.name,
+        telephone: c.tel,
+        contactType: "sales",
+        areaServed: "IN",
+        availableLanguage: ["en", "hi"],
+      })),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.q,
+        acceptedAnswer: { "@type": "Answer", text: faq.a },
+      })),
+    },
+  ];
 
   return (
     <script

@@ -1,24 +1,24 @@
 import { HeartPulse, Building2, ShieldCheck, Sparkles } from "lucide-react";
 
-import { whyPartner } from "@/lib/content";
+import { whyRefer } from "@/lib/content";
 import { SectionHeading } from "@/components/section-heading";
 import { StaggerGroup, StaggerItem } from "@/components/reveal";
 import { Card } from "@/components/ui/card";
 
 const icons = [HeartPulse, Building2, ShieldCheck, Sparkles];
 
-export function WhyPartner() {
+export function WhyRefer() {
   return (
-    <section id="why-partner" className="scroll-mt-24 py-16 sm:py-28">
+    <section id="why-refer" className="scroll-mt-24 py-16 sm:py-28">
       <div className="container-px mx-auto max-w-6xl">
         <SectionHeading
-          eyebrow={whyPartner.eyebrow}
-          title={whyPartner.title}
-          description={whyPartner.lead}
+          eyebrow={whyRefer.eyebrow}
+          title={whyRefer.title}
+          description={whyRefer.lead}
         />
 
         <StaggerGroup className="mt-14 grid gap-5 sm:grid-cols-2">
-          {whyPartner.points.map((point, i) => {
+          {whyRefer.points.map((point, i) => {
             const Icon = icons[i % icons.length];
             return (
               <StaggerItem key={point.title}>

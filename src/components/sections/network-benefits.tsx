@@ -1,13 +1,13 @@
 import { Headphones, Wrench, Megaphone, GraduationCap } from "lucide-react";
 
-import { partnerBenefits } from "@/lib/content";
+import { networkBenefits } from "@/lib/content";
 import { SectionHeading } from "@/components/section-heading";
 import { StaggerGroup, StaggerItem } from "@/components/reveal";
 import { Card } from "@/components/ui/card";
 
 const icons = [Headphones, Wrench, Megaphone, GraduationCap];
 
-export function PartnerBenefits() {
+export function NetworkBenefits() {
   return (
     <section
       id="benefits"
@@ -15,13 +15,13 @@ export function PartnerBenefits() {
     >
       <div className="container-px mx-auto max-w-6xl">
         <SectionHeading
-          eyebrow="Partner benefits"
+          eyebrow="Network benefits"
           title="Everything you need to recommend with confidence."
-          description="We invest in our partners with real support, tools and training — not just a logo to put on a deck."
+          description="We back our referral members with real support, tools and training — not just a logo to put on a deck."
         />
 
         <StaggerGroup className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {partnerBenefits.map((benefit, i) => {
+          {networkBenefits.map((benefit, i) => {
             const Icon = icons[i % icons.length];
             return (
               <StaggerItem key={benefit.title}>

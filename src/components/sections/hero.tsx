@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import Link from "next/link";
-import { ArrowRight, CalendarClock, Filter, ShieldCheck, Wind } from "lucide-react";
+import { ArrowRight, Filter, MapPin, ShieldCheck, Sparkles, Wind } from "lucide-react";
 
 import { heroStats, site } from "@/lib/content";
 import { Button } from "@/components/ui/button";
@@ -21,10 +21,14 @@ export function Hero() {
       <div className="container-px mx-auto max-w-6xl">
         <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
           <div>
-            <div className="ph-in">
+            <div className="ph-in flex flex-wrap items-center gap-2">
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/60 px-3.5 py-1.5 text-xs font-medium tracking-wide text-muted-foreground">
                 <ShieldCheck className="size-3.5 text-brand-teal" />
                 Authorized channel partner · {site.partnerOf}
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/60 px-3.5 py-1.5 text-xs font-medium tracking-wide text-muted-foreground">
+                <MapPin className="size-3.5 text-brand-blue" />
+                {site.coverage}
               </span>
             </div>
 
@@ -32,18 +36,18 @@ export function Hero() {
               className="ph-in mt-6 font-display text-[2rem] font-semibold leading-[1.08] tracking-tight text-balance sm:text-5xl md:text-6xl"
               style={{ animationDelay: "0.06s" }}
             >
-              Help your clients build{" "}
-              <span className="text-gradient">healthier luxury homes.</span>
+              Hospital-grade clean air for{" "}
+              <span className="text-gradient">the spaces that matter.</span>
             </h1>
 
             <p
               className="ph-in mt-5 max-w-xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg"
               style={{ animationDelay: "0.14s" }}
             >
-              PureHabitat partners with interior designers, architects, luxury
-              builders and home-automation companies to bring hospital-grade
-              clean air to the homes they create. You make the introduction — we
-              handle consultation, installation and lifetime service.
+              Designers, architects, builders, home-automation and HVAC firms
+              refer their clients and earn on every install. Homeowners, gyms,
+              schools and clinics get a free on-site air-quality assessment.
+              Assessed, installed and serviced by PureHabitat across India.
             </p>
 
             <div
@@ -51,15 +55,15 @@ export function Hero() {
               style={{ animationDelay: "0.22s" }}
             >
               <Button asChild variant="brand" size="lg">
-                <Link href="#become-partner">
-                  Become a partner
+                <Link href="#join">
+                  Join the Referral Network
                   <ArrowRight className="size-4" />
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <Link href="#book-demo">
-                  <CalendarClock className="size-4" />
-                  Book a demo
+                <Link href="#assessment">
+                  <Sparkles className="size-4" />
+                  Book a free assessment
                 </Link>
               </Button>
             </div>

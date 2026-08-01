@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 
 import { nav, site } from "@/lib/content";
 import { Logo } from "@/components/logo";
@@ -17,6 +17,10 @@ export function Footer() {
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
               Authorized channel partner for{" "}
               <span className="font-medium text-foreground">{site.partnerOf}</span>.
+            </p>
+            <p className="mt-3 inline-flex items-center gap-2 text-sm text-muted-foreground">
+              <MapPin className="size-4" />
+              {site.coverage}
             </p>
           </div>
 

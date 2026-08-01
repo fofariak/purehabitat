@@ -26,16 +26,16 @@ export function Contact() {
               <div>
                 <LogoMark gradient className="size-12" />
                 <h2 className="mt-6 font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-                  Let&apos;s bring clean air to your next project.
+                  Let&apos;s bring clean air to your next space.
                 </h2>
                 <p className="mt-4 max-w-lg text-pretty text-lg leading-relaxed text-muted-foreground">
-                  {site.tagline} Partner with PureHabitat and give every client a
-                  home that genuinely breathes better.
+                  {site.tagline} Refer your clients and earn, or book a free
+                  assessment for your own space — anywhere in India.
                 </p>
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                   <Button asChild variant="brand" size="lg">
-                    <Link href="#become-partner">
-                      Become a partner
+                    <Link href="#join">
+                      Join the Referral Network
                       <ArrowRight className="size-4" />
                     </Link>
                   </Button>

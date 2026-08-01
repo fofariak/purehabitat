@@ -1,17 +1,17 @@
 import Image from "next/image";
 
-import { targetProfessionals } from "@/lib/content";
+import { alsoForProfessionals, targetProfessionals } from "@/lib/content";
 import { SectionHeading } from "@/components/section-heading";
-import { StaggerGroup, StaggerItem } from "@/components/reveal";
+import { Reveal, StaggerGroup, StaggerItem } from "@/components/reveal";
 
-export function WhoWePartner() {
+export function WhoWeReferWith() {
   return (
     <section id="who" className="scroll-mt-24 py-16 sm:py-28">
       <div className="container-px mx-auto max-w-6xl">
         <SectionHeading
-          eyebrow="Who it's for"
+          eyebrow="Who refers with us"
           title="Built for the professionals who serve luxury clients."
-          description="We build relationships with the specialists who already have the trust of affluent homeowners — so clean air reaches the spaces that matter most, one introduction at a time."
+          description="Our Referral Network is made up of the specialists who already have the trust of affluent clients — so clean air reaches the spaces that matter most, one introduction at a time."
         />
 
         <StaggerGroup className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -43,6 +43,25 @@ export function WhoWePartner() {
             </StaggerItem>
           ))}
         </StaggerGroup>
+
+        {/* Trades without a photo card still need to see themselves on the page. */}
+        <Reveal className="mt-10">
+          <div className="rounded-2xl border border-dashed border-border bg-secondary/40 px-6 py-6 text-center sm:px-8">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+              Also referring with us
+            </p>
+            <ul className="mt-4 flex flex-wrap items-center justify-center gap-2.5">
+              {alsoForProfessionals.map((label) => (
+                <li
+                  key={label}
+                  className="rounded-full border border-border bg-card px-3.5 py-2 text-sm font-medium text-foreground/80"
+                >
+                  {label}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
