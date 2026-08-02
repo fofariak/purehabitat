@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-/** Home-screen icon for iOS. Same solid treatment as icon.svg, at 180×180. */
+/** Home-screen icon for iOS. Same green-on-navy brandmark as icon.svg. */
 export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
 
@@ -14,20 +14,22 @@ export default function AppleIcon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #1B5BFF 0%, #14C08A 100%)",
+          background: "#16224d",
         }}
       >
         <svg width="180" height="180" viewBox="0 0 48 48">
-          <g transform="translate(24 24) scale(0.74) translate(-24 -24)">
-            <path
-              d="M24 20.5C14.3 27.5 14.3 40 24 44.5C33.7 40 33.7 27.5 24 20.5Z"
-              fill="#ffffff"
-              fillOpacity="0.55"
-            />
-            <path
-              d="M24 4C15.2 12 15.2 25 24 31.5C32.8 25 32.8 12 24 4Z"
-              fill="#ffffff"
-            />
+          <g
+            transform="translate(24 24) scale(0.84) translate(-24 -24)"
+            stroke="#5ec08f"
+            strokeWidth="2.4"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <circle cx="24" cy="24" r="20.5" />
+            <path d="M24 5C15.2 13 15.2 26 24 32.5C32.8 26 32.8 13 24 5Z" />
+            <path d="M24 20.5C14.3 27.5 14.3 40 24 44.5C33.7 40 33.7 27.5 24 20.5Z" />
+            <path d="M24 5V44.5" />
           </g>
         </svg>
       </div>

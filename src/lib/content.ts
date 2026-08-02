@@ -39,14 +39,43 @@ export function whatsappLink(number: string, message: string = site.whatsappMess
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }
 
+/**
+ * Nav hrefs are absolute, not bare hashes — the site is two pages now, so
+ * "#faq" would silently do nothing when you are already on /technology.
+ */
 export const nav = [
-  { label: "The System", href: "#concept" },
-  { label: "Work With Us", href: "#work-with-us" },
-  { label: "Projects", href: "#projects" },
-  { label: "Why YOGa", href: "#why-yoga" },
-  { label: "Where It Works", href: "#spaces" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Work With Us", href: "/#work-with-us" },
+  { label: "The System", href: "/#concept" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Why YOGa", href: "/technology" },
+  { label: "Where It Works", href: "/technology#spaces" },
+  { label: "FAQ", href: "/technology#faq" },
 ] as const;
+
+/** The two routes, in one place, so cross-page links stay consistent. */
+export const routes = {
+  home: "/",
+  technology: "/technology",
+  join: "/#join",
+  assessment: "/#assessment",
+} as const;
+
+/** Header for the second page, and the band on the home page that links to it. */
+export const technologyPage = {
+  eyebrow: "Technology & proof",
+  title: "The evidence behind the Clean Air Bubble.",
+  lead: "Independent IIT Delhi measurements, a straight comparison against room purifiers and standard ERVs, and the full Y-CAB specification — everything you need before recommending it to a client or installing it in your own space.",
+  crossLink: {
+    eyebrow: "Go deeper",
+    title: "Want the numbers, not the pitch?",
+    body: "Verified IIT Delhi results, the Room Purifier vs ERV vs Y-CAB comparison, full technical specifications and the brochure — on one page.",
+    cta: "See the technical proof",
+  },
+  backLink: {
+    title: "Ready to talk?",
+    body: "Refer your clients and earn on every install, or book a free on-site air-quality assessment for your own space.",
+  },
+} as const;
 
 /** Headline proof points shown under the hero. */
 export const heroStats = [

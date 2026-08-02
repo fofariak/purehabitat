@@ -38,24 +38,47 @@ segmented control at the top of the form.
 - Social preview card generated at build time via `next/og`
   (`src/app/opengraph-image.tsx`)
 
-## Landing page sections
+## Pages
 
-1. Hero — "Hospital-grade clean air for the spaces that matter."
+The site is **two pages**, split by depth. Home is the pitch and the conversion
+path; the heavy evidence lives on `/technology`. That split exists because the
+comparison table, the full spec list and the 11-question FAQ were what made the
+single page feel endless.
+
+### `/` — the pitch
+
+1. Hero — "The cleanest air your space has ever breathed", with the animated
+   cutaway-home simulation
 2. **Work with us** — the two-track audience fork
 3. The system — ventilation + purification (Clean Air Bubble)
-4. **Completed projects** — walkthrough video, 10+ spaces, pan-India coverage marquee
-5. Brand moment
-6. Why refer
-7. Who refers with us (+ HVAC / MEP / PMC strip)
-8. Where it works — homes, schools, offices, clinics, gyms, hospitality
-9. Why YOGa Clean Air (benefits, IIT-Delhi verified results, Room Purifier vs ERV vs Y-CAB, tech specs)
-10. How it works — tabbed, one 5-step path per audience
-11. Network benefits
-12. Resources (brochure download, technical guide, FAQ)
-13. **Enquiry form** — dual-mode, stored in Supabase
-14. Book a demo (Calendly or WhatsApp fallback)
-15. FAQ
-16. Contact
+4. **Completed projects** — walkthrough video, 10+ spaces, pan-India marquee
+5. Why refer
+6. Who refers with us (+ HVAC / MEP / PMC strip)
+7. How it works — tabbed, one 5-step path per audience
+8. Network benefits
+9. Technology band — hand-off to `/technology`
+10. **Enquiry form** — dual-mode, stored in Supabase
+11. Contact
+
+### `/technology` — the proof
+
+1. Page header
+2. Why YOGa (benefits, IIT-Delhi verified results, Room Purifier vs ERV vs
+   Y-CAB comparison, full tech specs)
+3. Where it works — homes, schools, offices, clinics, gyms, hospitality
+4. Brand moment
+5. Resources (brochure download, technical guide, FAQ)
+6. Book a demo (Calendly or WhatsApp fallback)
+7. FAQ — also carries the `FAQPage` structured data
+8. Enquiry band — sends visitors back to the form on home
+
+**The enquiry form exists only on home.** Both pages link to it via
+`routes.join` / `routes.assessment` in `src/lib/content.ts`. Keep it that way —
+one form, one table, no ambiguity about where a submission came from.
+
+> ⚠️ Nav and cross-page links must be **absolute** (`/#faq`, not `#faq`). A bare
+> hash silently does nothing when you are already on the other page. The `nav`
+> and `routes` exports in `content.ts` are the single source for these.
 
 All product claims come from the official YOGa brochure and the Y-CAB vs ERV
 document — see `src/lib/content.ts`.

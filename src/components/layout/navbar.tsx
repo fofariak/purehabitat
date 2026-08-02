@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { nav } from "@/lib/content";
+import { nav, routes } from "@/lib/content";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -80,10 +80,10 @@ export function Navbar() {
           <div className="flex items-center gap-1.5">
             <ThemeToggle />
             <Button asChild variant="ghost" size="sm" className="hidden md:inline-flex">
-              <Link href="#assessment">Free assessment</Link>
+              <Link href={routes.assessment}>Free assessment</Link>
             </Button>
             <Button asChild variant="brand" size="sm" className="hidden sm:inline-flex">
-              <Link href="#join">Refer &amp; earn</Link>
+              <Link href={routes.join}>Refer &amp; earn</Link>
             </Button>
             <button
               type="button"
@@ -118,10 +118,10 @@ export function Navbar() {
             ))}
             <div className="mt-2 flex flex-col gap-2">
               <Button asChild variant="outline" onClick={() => setOpen(false)}>
-                <Link href="#assessment">Book a free assessment</Link>
+                <Link href={routes.assessment}>Book a free assessment</Link>
               </Button>
               <Button asChild variant="brand" onClick={() => setOpen(false)}>
-                <Link href="#join">Join the Referral Network</Link>
+                <Link href={routes.join}>Join the Referral Network</Link>
               </Button>
             </div>
           </div>

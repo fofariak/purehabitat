@@ -1,21 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
   <!--
-    Favicon / tab icon. Deliberately a SOLID app-icon treatment rather than the
-    thin outline brandmark used in the header: 1.6px strokes disappear entirely
-    at the 16px Chrome renders a tab icon at.
+    Favicon / tab icon — the full outline brandmark in green on navy.
+    Strokes are heavier than the header logo (2.8 vs 1.6): at the 16px Chrome
+    renders a tab icon at, the header weight disappears entirely.
   -->
-  <defs>
-    <linearGradient id="ph-fav" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#1B5BFF"/>
-      <stop offset="1" stop-color="#14C08A"/>
-    </linearGradient>
-  </defs>
-  <rect width="48" height="48" rx="11" fill="url(#ph-fav)"/>
-  <!-- Scaled about the centre so the mark keeps app-icon padding on all sides -->
-  <g transform="translate(24 24) scale(0.74) translate(-24 -24)">
-    <!-- Lower loop (constant purification) — sits behind, knocked back -->
-    <path d="M24 20.5C14.3 27.5 14.3 40 24 44.5C33.7 40 33.7 27.5 24 20.5Z" fill="#ffffff" fill-opacity="0.55"/>
+  <rect width="48" height="48" rx="10" fill="#16224d"/>
+  <g transform="translate(24 24) scale(0.84) translate(-24 -24)"
+     stroke="#5ec08f"
+     stroke-width="2.8"
+     fill="none"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+    <circle cx="24" cy="24" r="20.5"/>
     <!-- Upper leaf (fresh air) -->
-    <path d="M24 4C15.2 12 15.2 25 24 31.5C32.8 25 32.8 12 24 4Z" fill="#ffffff"/>
+    <path d="M24 5C15.2 13 15.2 26 24 32.5C32.8 26 32.8 13 24 5Z"/>
+    <!-- Lower loop (constant purification) -->
+    <path d="M24 20.5C14.3 27.5 14.3 40 24 44.5C33.7 40 33.7 27.5 24 20.5Z"/>
+    <!-- Centre vein -->
+    <path d="M24 5V44.5"/>
   </g>
 </svg>
