@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import { MapPin, Play } from "lucide-react";
 
 import { projects } from "@/lib/content";
@@ -114,14 +115,21 @@ function Player() {
                   "radial-gradient(45% 60% at 20% 15%, color-mix(in srgb, var(--brand-blue) 55%, transparent), transparent 70%), radial-gradient(50% 65% at 85% 90%, color-mix(in srgb, var(--brand-teal) 45%, transparent), transparent 70%)",
               }}
             />
-            <span
+            {/* next/image rather than a CSS background: the poster is a photo,
+                so it is worth the AVIF/WebP conversion and responsive sizing. */}
+            <Image
+              src={projects.videoPoster}
+              alt=""
               aria-hidden
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url(${projects.videoPoster})` }}
+              fill
+              sizes="(max-width: 1024px) 100vw, 1024px"
+              className="object-cover"
+              priority={false}
             />
+            {/* Lighter at the centre so the meter reading stays legible */}
             <span
               aria-hidden
-              className="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-brand-navy/10 to-brand-navy/25"
+              className="absolute inset-0 bg-gradient-to-t from-brand-navy/85 via-brand-navy/5 to-brand-navy/30"
             />
 
             <span className="absolute inset-0 flex items-center justify-center">
