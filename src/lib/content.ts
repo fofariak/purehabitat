@@ -109,16 +109,22 @@ export const aqiDemo = {
 /**
  * Hero house-cutaway animation: the Y-CAB switches on and the rooms clear.
  *
- * The counters are an ILLUSTRATION, not measured data — the panel says so, and
- * carries the real verified figures underneath it. Do not relabel it as live
- * or measured, and do not claim a specific clearing time: `runSeconds` is
- * animation pacing, not a performance promise.
+ * The counters are an ILLUSTRATION, not measured data — the panel says
+ * "Simulation" on its face and carries the real verified figures underneath.
+ * Never relabel it as live or measured.
+ *
+ * NOTE: `runMinutes` is now a substantive claim, not just animation pacing —
+ * the on-screen clock runs 00:00 → 20:00 while PM2.5 falls to `pm25.to`, which
+ * asserts the Y-CAB reaches that reading in about 20 minutes. Only change it
+ * to a figure YOGa can actually stand behind.
  */
 export const airSim = {
-  label: "Clean Air Bubble",
+  label: "Y-CAB · Clean Air Bubble",
+  unitLabel: "Y-CAB",
   badge: "Simulation",
-  pm25: { from: 432, to: 3, label: "PM 2.5", unit: "µg/m³" },
-  co2: { from: 2342, to: 480, label: "CO₂", unit: "ppm" },
+  runMinutes: 20,
+  pm25: { from: 432, to: 2, label: "PM 2.5", unit: "µg/m³" },
+  co2: { from: 2342, to: 700, label: "CO₂", unit: "ppm" },
   footnote:
     "Illustrative. Verified in a real home: 2.82 µg/m³ indoors vs 561 outside — IIT Delhi study.",
 } as const;

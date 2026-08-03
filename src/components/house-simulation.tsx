@@ -33,19 +33,22 @@ const MOTES = [
 export function HouseSimulation() {
   const ref = React.useRef<HTMLDivElement>(null);
   const [t, setT] = React.useState(0);
-  const [elapsed, setElapsed] = React.useState(0);
+  /** Linear 0→1 across the run. Drives the clock, which should tick evenly
+      even though the pollutant curve is eased. */
+  const [progress, setProgress] = React.useState(0);
 
   React.useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      const done = () => {
+      // Jump straight to the cleared end state, on the next frame rather than
+      // synchronously inside the effect.
+      const once = requestAnimationFrame(() => {
         setT(1);
-        setElapsed(RUN_MS);
-      };
-      done();
-      return;
+        setProgress(1);
+      });
+      return () => cancelAnimationFrame(once);
     }
 
     let raf = 0;
@@ -61,14 +64,14 @@ export function HouseSimulation() {
         const p = at / RUN_MS;
         // easeOutCubic — drops fast, then settles, like a real meter.
         setT(1 - Math.pow(1 - p, 3));
-        setElapsed(at);
+        setProgress(p);
       } else if (at < RUN_MS + HOLD_MS) {
         setT(1);
-        setElapsed(RUN_MS);
+        setProgress(1);
       } else {
         // Brief fade back to polluted before the next pass.
         setT(1 - (at - RUN_MS - HOLD_MS) / RESET_MS);
-        setElapsed(0);
+        setProgress(0);
       }
 
       if (running) raf = requestAnimationFrame(frame);
@@ -98,7 +101,9 @@ export function HouseSimulation() {
 
   const pm = Math.round(airSim.pm25.from + (airSim.pm25.to - airSim.pm25.from) * t);
   const co2 = Math.round(airSim.co2.from + (airSim.co2.to - airSim.co2.from) * t);
-  const totalSec = Math.floor(elapsed / 1000);
+  // The clock reads simulated minutes, not real ones: the animation runs in
+  // seconds but represents airSim.runMinutes of the unit actually working.
+  const totalSec = Math.round(airSim.runMinutes * 60 * progress);
   const clock = `${String(Math.floor(totalSec / 60)).padStart(2, "0")}:${String(totalSec % 60).padStart(2, "0")}`;
 
   // 0 = filthy, 1 = clean. Drives the haze, the motes and the readout colours.
@@ -210,7 +215,7 @@ function HouseSvg({ t }: { t: number }) {
       viewBox="0 0 420 300"
       className="mt-4 w-full"
       role="img"
-      aria-label="Cutaway of a home with the Y-CAB running: indoor air clears as PM2.5 and CO₂ fall"
+      aria-label={`Cutaway of a home with the Y-CAB running: over ${airSim.runMinutes} minutes indoor PM2.5 falls from ${airSim.pm25.from} to ${airSim.pm25.to} µg/m³ and CO₂ from ${airSim.co2.from} to ${airSim.co2.to} ppm`}
     >
       <defs>
         {/* Smog: heavy enough to read as polluted, light enough to see through */}
@@ -374,6 +379,19 @@ function HouseSvg({ t }: { t: number }) {
         <circle cx="87" cy="123" r="1.8" fill="#ffffff" opacity={0.5 + t * 0.5} />
         {/* Status light — off, then live */}
         <circle cx="57" cy="111" r="2.4" fill="var(--brand-mint)" opacity={0.2 + t * 0.8} />
+        {/* Name the hardware, so the unit is identifiable at a glance */}
+        <text
+          x="75"
+          y="154"
+          textAnchor="middle"
+          className="font-display"
+          fontSize="11"
+          fontWeight="600"
+          letterSpacing="0.5"
+          fill="rgba(255,255,255,0.75)"
+        >
+          {airSim.unitLabel}
+        </text>
       </g>
 
       {/* Filtered air pushing in, strongest once the unit is at work */}
