@@ -227,6 +227,18 @@ export const projects = {
   eyebrow: "Completed projects",
   title: "10+ spaces already breathing clean air.",
   lead: "Homes, schools and clinics with the Clean Air Bubble installed and running — designed, installed and serviced by PureHabitat across India.",
+  /**
+   * YouTube id. Set here so it works without any Netlify config;
+   * NEXT_PUBLIC_SHOWCASE_YOUTUBE_ID still overrides it if you want to swap the
+   * video without a code change.
+   */
+  youtubeId: "h5pwZ6JQUt8",
+  /**
+   * "portrait" for a vertical Short, "landscape" for a normal 16:9 upload.
+   * Drives the whole player layout — a Short in a 16:9 frame is a tiny strip
+   * between two black bars.
+   */
+  videoOrientation: "portrait" as "portrait" | "landscape",
   videoSrc: "/video/showcase.mp4",
   videoPoster: "/img/showcase-poster.jpg",
   videoLabel: "Walkthrough of a completed PureHabitat installation",

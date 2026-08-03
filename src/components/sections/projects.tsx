@@ -5,19 +5,23 @@ import Image from "next/image";
 import { MapPin, Play } from "lucide-react";
 
 import { projects } from "@/lib/content";
+import { cn } from "@/lib/utils";
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
 
 /**
  * Video source resolution (first match wins):
- *   1. NEXT_PUBLIC_SHOWCASE_YOUTUBE_ID → click-to-load YouTube embed
- *   2. NEXT_PUBLIC_SHOWCASE_VIDEO_URL  → any direct .mp4 URL (CDN / Supabase)
- *   3. projects.videoSrc               → self-hosted file in public/video/
+ *   1. NEXT_PUBLIC_SHOWCASE_YOUTUBE_ID / projects.youtubeId → YouTube embed
+ *   2. NEXT_PUBLIC_SHOWCASE_VIDEO_URL                       → direct .mp4 URL
+ *   3. projects.videoSrc                                    → public/video/
  *
  * Nothing third-party loads until the visitor actually presses play.
  */
-const YOUTUBE_ID = process.env.NEXT_PUBLIC_SHOWCASE_YOUTUBE_ID;
+const YOUTUBE_ID =
+  process.env.NEXT_PUBLIC_SHOWCASE_YOUTUBE_ID || projects.youtubeId;
 const VIDEO_URL = process.env.NEXT_PUBLIC_SHOWCASE_VIDEO_URL || projects.videoSrc;
+
+const IS_PORTRAIT = projects.videoOrientation === "portrait";
 
 export function Projects() {
   return (
@@ -29,25 +33,43 @@ export function Projects() {
           description={projects.lead}
         />
 
-        <Reveal className="mt-14">
-          <Player />
-        </Reveal>
+        {/* A vertical video sits beside the proof points rather than above
+            them — full width, a 9:16 frame would be absurdly tall. */}
+        <div
+          className={cn(
+            "mt-14",
+            IS_PORTRAIT
+              ? "grid items-center gap-8 lg:grid-cols-[minmax(0,330px)_1fr] lg:gap-12"
+              : "space-y-6",
+          )}
+        >
+          <Reveal>
+            <Player />
+          </Reveal>
 
-        {/* Proof strip */}
-        <Reveal className="mt-6">
-          <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border lg:grid-cols-4">
-            {projects.stats.map((stat) => (
-              <div key={stat.label} className="bg-card p-5 text-center sm:p-6">
-                <dd className="font-display text-2xl font-semibold tracking-tight text-gradient sm:text-3xl">
-                  {stat.value}
-                </dd>
-                <dt className="mt-1.5 text-xs text-muted-foreground sm:text-sm">
-                  {stat.label}
-                </dt>
-              </div>
-            ))}
-          </dl>
-        </Reveal>
+          <Reveal delay={0.1}>
+            <dl
+              className={cn(
+                "grid gap-px overflow-hidden rounded-2xl border border-border bg-border",
+                IS_PORTRAIT ? "grid-cols-2" : "grid-cols-2 lg:grid-cols-4",
+              )}
+            >
+              {projects.stats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="bg-card p-5 text-center transition-colors duration-300 hover:bg-secondary/50 sm:p-6"
+                >
+                  <dd className="font-display text-2xl font-semibold tracking-[-0.03em] text-gradient sm:text-3xl">
+                    {stat.value}
+                  </dd>
+                  <dt className="mt-1.5 text-xs text-muted-foreground sm:text-sm">
+                    {stat.label}
+                  </dt>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
+        </div>
       </div>
 
       <CityMarquee />
@@ -67,18 +89,23 @@ function Player() {
   };
 
   return (
-    <div className="relative">
+    <div className={cn("relative", IS_PORTRAIT && "mx-auto w-full max-w-[330px]")}>
       {/* Ambient glow behind the frame (desktop only — cheap paint on mobile) */}
       <div
         aria-hidden
         className="pointer-events-none absolute -inset-4 -z-10 hidden rounded-[2.5rem] bg-brand-gradient opacity-20 blur-3xl sm:block"
       />
 
-      <div className="relative aspect-video overflow-hidden rounded-3xl border border-border bg-brand-navy shadow-xl">
+      <div
+        className={cn(
+          "relative overflow-hidden rounded-3xl border border-border bg-brand-navy shadow-xl",
+          IS_PORTRAIT ? "aspect-[9/16]" : "aspect-video",
+        )}
+      >
         {playing ? (
           YOUTUBE_ID ? (
             <iframe
-              src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_ID}?autoplay=1&rel=0&modestbranding=1`}
+              src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_ID}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
               title={projects.videoLabel}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -115,17 +142,43 @@ function Player() {
                   "radial-gradient(45% 60% at 20% 15%, color-mix(in srgb, var(--brand-blue) 55%, transparent), transparent 70%), radial-gradient(50% 65% at 85% 90%, color-mix(in srgb, var(--brand-teal) 45%, transparent), transparent 70%)",
               }}
             />
-            {/* next/image rather than a CSS background: the poster is a photo,
-                so it is worth the AVIF/WebP conversion and responsive sizing. */}
-            <Image
-              src={projects.videoPoster}
-              alt=""
-              aria-hidden
-              fill
-              sizes="(max-width: 1024px) 100vw, 1024px"
-              className="object-cover"
-              priority={false}
-            />
+
+            {IS_PORTRAIT ? (
+              <>
+                {/*
+                  The poster is a landscape still, so centre-cropping it into a
+                  9:16 frame would slice the sides off the meter. Letterbox the
+                  sharp copy over a blurred fill instead — the treatment every
+                  video app uses for mismatched aspect ratios.
+                */}
+                <Image
+                  src={projects.videoPoster}
+                  alt=""
+                  aria-hidden
+                  fill
+                  sizes="330px"
+                  className="scale-110 object-cover opacity-40 blur-2xl"
+                />
+                <Image
+                  src={projects.videoPoster}
+                  alt=""
+                  aria-hidden
+                  fill
+                  sizes="330px"
+                  className="object-contain"
+                />
+              </>
+            ) : (
+              <Image
+                src={projects.videoPoster}
+                alt=""
+                aria-hidden
+                fill
+                sizes="(max-width: 1024px) 100vw, 1024px"
+                className="object-cover"
+              />
+            )}
+
             {/* Lighter at the centre so the meter reading stays legible */}
             <span
               aria-hidden
@@ -138,17 +191,13 @@ function Player() {
               </span>
             </span>
 
-            <span className="absolute inset-x-5 bottom-5 text-left sm:inset-x-8 sm:bottom-7">
-              <span className="block font-display text-lg font-semibold text-white sm:text-xl">
+            <span className="absolute inset-x-5 bottom-5 text-left sm:bottom-6">
+              <span className="block font-display text-base font-semibold text-white sm:text-lg">
                 Inside a completed installation
               </span>
-              <span className="mt-1 block text-sm text-white/70">
-                Watch the walkthrough ·
-                {" "}
-                <span className="inline-flex items-center gap-1 align-middle">
-                  <MapPin className="size-3.5" />
-                  Installed and serviced across India
-                </span>
+              <span className="mt-1 flex items-center gap-1 text-xs text-white/70 sm:text-sm">
+                <MapPin className="size-3.5 shrink-0" />
+                Installed and serviced across India
               </span>
             </span>
           </button>
