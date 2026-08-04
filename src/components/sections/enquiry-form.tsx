@@ -278,7 +278,7 @@ function ModeSwitch({
   onChange: (next: Mode) => void;
 }) {
   const options = [
-    { key: "refer" as const, label: "I refer clients", icon: Building2 },
+    { key: "refer" as const, label: "For my clients", icon: Building2 },
     { key: "own" as const, label: "For my own space", icon: Home },
   ];
 

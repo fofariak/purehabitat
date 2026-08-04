@@ -23,7 +23,7 @@ export const site = {
   network: "Referral Network",
   coverage: "Serving across India",
   description:
-    "PureHabitat is the authorized dealer for YOGa Clean Air. Interior designers, architects, luxury builders, home-automation and HVAC firms refer their clients and earn; homeowners, gyms, schools and clinics get a free on-site air-quality assessment. Installed and serviced across India.",
+    "PureHabitat is the authorized dealer for YOGa Clean Air — a whole-space system that brings filtered outdoor air in and holds the space at positive pressure, so pollution cannot get back in. For interior designers, architects, luxury builders, home-automation and HVAC firms, and for homeowners, gyms, schools and clinics. Installed and serviced across India.",
   url: "https://mypurehabitat.com",
   email: "hello@mypurehabitat.com",
   contacts: [
@@ -89,7 +89,12 @@ export const heroStats = [
 export const hero = {
   headline: "The cleanest air",
   headlineAccent: "your space has ever breathed.",
-  lead: "Designers, architects, builders, home-automation and HVAC firms refer their clients and earn on every install. Homeowners, gyms, schools and clinics get a free on-site air-quality assessment. Assessed, installed and serviced by PureHabitat across India.",
+  /**
+   * The hero lead says what the thing IS. Audience segmentation happens in the
+   * Tracks section directly below, so it does not need repeating here — a cold
+   * visitor needs to understand the product before they can place themselves.
+   */
+  lead: "Not another purifier in the corner. The Y-CAB brings filtered outdoor air into your whole space and holds it at positive pressure — so pollution can't get back in.",
 } as const;
 
 /**

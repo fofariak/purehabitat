@@ -83,7 +83,7 @@ export function Navbar() {
               <Link href={routes.assessment}>Free assessment</Link>
             </Button>
             <Button asChild variant="brand" size="sm" className="hidden sm:inline-flex">
-              <Link href={routes.join}>Refer &amp; earn</Link>
+              <Link href={routes.join}>For professionals</Link>
             </Button>
             <button
               type="button"
