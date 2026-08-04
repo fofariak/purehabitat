@@ -9,8 +9,9 @@ import { Button } from "@/components/ui/button";
 /**
  * The primary fork in the page.
  *
- * Professionals earn a referral reward; end clients can't be given one, so they
- * get a free on-site assessment instead. Keeping both visible up front means a
+ * Professionals are sold on their client's outcome and their own portfolio, not
+ * on a fee; end clients get a free on-site assessment. Keeping both visible
+ * means a
  * gym owner or school never has to read referral copy to find their own path.
  */
 export function Tracks() {

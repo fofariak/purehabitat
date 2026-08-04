@@ -94,7 +94,7 @@ export default function Image() {
               maxWidth: 880,
             }}
           >
-            Refer &amp; earn, or book a free on-site air-quality assessment.
+            Ventilation and purification in one, for the spaces you create.
           </div>
         </div>
 

@@ -73,7 +73,7 @@ export const technologyPage = {
   },
   backLink: {
     title: "Ready to talk?",
-    body: "Refer your clients and earn on every install, or book a free on-site air-quality assessment for your own space.",
+    body: "Specify clean air into the spaces you create for clients, or book a free on-site air-quality assessment for your own space.",
   },
 } as const;
 
@@ -94,7 +94,7 @@ export const hero = {
    * Tracks section directly below, so it does not need repeating here — a cold
    * visitor needs to understand the product before they can place themselves.
    */
-  lead: "Not another purifier in the corner. The Y-CAB brings filtered outdoor air into your whole space and holds it at positive pressure — so pollution can't get back in.",
+  lead: "Not another purifier in the corner. The Y-CAB is ventilation and purification in one — fresh outdoor air filtered into your whole space, held at positive pressure so pollution can't get back in.",
 } as const;
 
 /**
@@ -135,22 +135,27 @@ export const airSim = {
 } as const;
 
 /**
- * The two ways to work with PureHabitat. This is the primary fork in the page:
- * professionals earn on referrals, end clients get a free assessment instead.
+ * The two ways to work with PureHabitat — the primary fork in the page.
+ *
+ * The professional track is deliberately framed around the CLIENT's outcome and
+ * what the specifier adds to their portfolio, not around a payment. Commercial
+ * terms vary per project and are discussed privately; putting a fee on the page
+ * also puts registered architects in an awkward position with their own code of
+ * conduct. Keep money out of this copy.
  */
 export const tracks = {
   eyebrow: "Work with us",
   title: "Two ways to bring clean air into a space.",
-  lead: "Recommend YOGa to the clients you already serve — or get it installed in your own home, gym, school or clinic. Pick the path that fits you.",
+  lead: "Specify it into the spaces you create for clients — or have it installed in your own home, gym, school or clinic. Pick the path that fits you.",
   refer: {
     key: "refer",
     kicker: "For professionals",
-    title: "Refer your clients, earn on every install",
-    body: "Interior designers, architects, luxury builders, home-automation and HVAC firms join the PureHabitat Referral Network. You make the introduction — we handle the assessment, installation and lifetime service, and you earn a reward on every completed project.",
+    title: "A signature amenity your clients can measure",
+    body: "Interior designers, architects, luxury builders, home-automation and HVAC firms specify YOGa into the spaces they create. Your client gets air that is demonstrably cleaner on the day of handover; your practice gets a rare, memorable addition to an already luxury portfolio — with none of the delivery burden.",
     points: [
-      "Free to join — no cost, no targets, no exclusivity",
-      "Referral reward on every completed installation",
+      "A distinction few practices can offer their clients",
       "Free on-site air-quality assessment for your client",
+      "We handle assessment, installation and lifetime service",
       "Your name stays on the client relationship",
     ],
     cta: "Join the Referral Network",
@@ -292,25 +297,25 @@ export const spaces = [
 ] as const;
 
 export const whyRefer = {
-  eyebrow: "Why refer",
-  title: "The professionals who shape luxury spaces make the biggest impact.",
-  lead: "You already serve clients who care about wellness. Recommending YOGa Clean Air adds a signature upgrade to your projects — and one introduction can become qualified buyers for years.",
+  eyebrow: "Why specify it",
+  title: "The last thing a luxury project is still missing.",
+  lead: "Your clients have already bought the finest finishes, the filtered water and the wellness kitchen. The air they breathe inside all of it is the one thing nobody has addressed — and the one upgrade they can feel on day one.",
   points: [
     {
-      title: "Serve clients who already value wellness",
-      body: "Your clients invest in organic food and filtered water. Clean air is the natural next upgrade — introduced by someone they already trust: you.",
+      title: "An upgrade your clients can actually feel",
+      body: "Most luxury specifications are admired. This one is felt — better sleep, clearer heads, fewer allergies. Clients notice it every morning, and they credit the person who suggested it.",
     },
     {
-      title: "One introduction, many buyers",
-      body: "A single professional relationship can introduce multiple qualified buyers over time — far more scalable than reaching homeowners one by one.",
+      title: "A rare addition to your portfolio",
+      body: "Very few practices in India can offer certified clean air as part of a scheme. It photographs as a wellness credential, reads well in a pitch, and is genuinely difficult for a competitor to answer.",
     },
     {
-      title: "Differentiate every project",
-      body: "Air this clean is a rare, memorable amenity that sets your work apart, gets talked about, and preserves the architecture with a ductless system.",
+      title: "Preserves the architecture",
+      body: "A ductless or minimal-duct system means no dropped ceilings, no bulkheads and no compromise to the volumes you designed. It disappears into the building rather than dictating it.",
     },
     {
-      title: "Zero operational burden",
-      body: "You make the introduction; PureHabitat handles the IAQ assessment, installation and lifetime white-glove service. Your name stays on the relationship.",
+      title: "None of the delivery burden",
+      body: "You introduce it; PureHabitat handles the air-quality assessment, installation and lifetime service. Your name stays on the client relationship throughout.",
     },
   ],
 } as const;
@@ -486,8 +491,8 @@ export const howItWorks = {
     },
     {
       step: "05",
-      title: "You earn, we service",
-      body: "You receive your referral reward; we keep the system running with white-glove service. Then introduce the next project.",
+      title: "Handed over, and looked after",
+      body: "Your client gets a space that measurably outperforms the one next door, and we keep it running with white-glove service. Then you specify the next project.",
     },
   ],
   own: [
@@ -605,7 +610,7 @@ export const faqs = [
   },
   {
     q: "Is there any cost to join the Referral Network?",
-    a: "No. Joining is free, with no targets and no exclusivity. You introduce clients and projects; we handle everything else — and reward you for every completed installation.",
+    a: "No. Joining is free, with no targets and no exclusivity. You introduce clients and projects; we handle the assessment, installation and lifetime service. Commercial terms vary by project and are agreed with you directly.",
   },
   {
     q: "What support do members get after referring a client?",

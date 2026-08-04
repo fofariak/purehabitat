@@ -30,7 +30,7 @@ const initialState: EnquiryActionState = { status: "idle", message: "" };
 const copy = {
   refer: {
     eyebrow: "Join the Referral Network",
-    title: "Refer your clients. Earn on every install.",
+    title: "Specify clean air into your next project.",
     description:
       "Tell us a little about your practice. Our team reaches out within two business days — free to join, no targets, and your client relationship stays yours.",
     perks: tracks.refer.points,

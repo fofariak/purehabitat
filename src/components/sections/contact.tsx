@@ -29,8 +29,8 @@ export function Contact() {
                   Let&apos;s bring clean air to your next space.
                 </h2>
                 <p className="mt-4 max-w-lg text-pretty text-lg leading-relaxed text-muted-foreground">
-                  {site.tagline} Refer your clients and earn, or book a free
-                  assessment for your own space — anywhere in India.
+                  {site.tagline} Specify it into the spaces you create, or book
+                  a free assessment for your own space — anywhere in India.
                 </p>
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                   <Button asChild variant="brand" size="lg">
